@@ -1,0 +1,60 @@
+= Git 101
+Thomas Herzog
+2018-12-19
+:author: Thomas Herzog
+:revnumber: {project-version}
+:example-caption!:
+ifndef::imagesdir[:imagesdir: images]
+ifndef::sourcedir[:sourcedir: ../../main/java]
+:title-slide-background-image: 70s.jpg
+:title-slide-transition: zoom
+:title-slide-transition-speed: fast
+:customcss: slides.css
+
+== What is SVN?
+image:svn-central-server.svg[title="SVN central server"]
+
+* Most common CVS system
+* Central repository server
+* Repository layout:
+** trunk __(Current development)__
+** branches = __(Feature development)__
+** tags     = __(Releases)__
+
+=== How SVN Branching works?
+image:svn-how-does-branch.svg[title="SVN Branching"]
+
+* Copies whole tree we branch from
+* Copies tree by linking files
+* Performs __Copy on Write__ when resource changes
+* Changes occur only on copied tree
+* Keep up with parent tree
+
+=== Merge vs Reintegrate?
+--
+image:svn-how-does-merge.svg[title="SVN Branch Merge",caption="SVN Branch Merge"]
+image:svn-how-does-reintegrate.svg[title="SVN Branch Reintegrate",caption="SVN Branch Merge"]
+--
+
+* **Merge:**
+** Calculates only set of changes
+** Cherry picking of revisions (range of revisions)
+* **Reintegrate:**
+** Calculates all changes
+** All branch changes are reintegrated to parent
+
+== What is GIT?
+
+=== How does Git work?
+
+== Why using Git over SVN?
+
+=== Performance
+
+=== Distributed Repository
+
+=== Branching Models
+
+== Why using a Git-Server?
+
+=== Not supported by Git

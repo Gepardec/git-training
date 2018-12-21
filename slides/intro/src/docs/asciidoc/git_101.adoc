@@ -4,7 +4,7 @@ Thomas Herzog
 :author: Thomas Herzog
 :revnumber: {project-version}
 :example-caption!:
-ifndef::imagesdir[:imagesdir: images]
+ifndef::imagesdir[:imagesdir: generated-images]
 ifndef::sourcedir[:sourcedir: ../../main/java]
 :title-slide-background-image: 70s.jpg
 :title-slide-transition: zoom
@@ -12,49 +12,66 @@ ifndef::sourcedir[:sourcedir: ../../main/java]
 :customcss: slides.css
 
 == What is SVN?
-image:svn-central-server.svg[title="SVN central server"]
 
-* Most common CVS system
-* Central repository server
-* Repository layout:
-** trunk __(Current development)__
-** branches = __(Feature development)__
-** tags     = __(Releases)__
-
-=== How SVN Branching works?
-image:svn-how-does-branch.svg[title="SVN Branching"]
-
-* Copies whole tree we branch from
-* Copies tree by linking files
-* Performs __Copy on Write__ when resource changes
-* Changes occur only on copied tree
-* Keep up with parent tree
-
-=== Merge vs Reintegrate?
+[graphviz, svn-system, svg]
 --
-image:svn-how-does-merge.svg[title="SVN Branch Merge",caption="SVN Branch Merge"]
-image:svn-how-does-reintegrate.svg[title="SVN Branch Reintegrate",caption="SVN Branch Merge"]
+include::./graphviz/svn-system.dot[]
 --
 
-* **Merge:**
-** Calculates only set of changes
-** Cherry picking of revisions (range of revisions)
-* **Reintegrate:**
-** Calculates all changes
-** All branch changes are reintegrated to parent
+* Single central server
+* Local working copy
+* No server, no commit
+
+=== How SVN stores data?
+
+* Versions are represented as a tree
+* A branch is a copied folder
+* Versions are series of changes
+
+=== How SVN Branch works?
+
+[graphviz, svn-branch, svg]
+--
+include::./graphviz/svn-branch.dot[]
+--
+
+* Branch is a copy of a tree
+* Files are only linked
+* File is copied on write (Bubble up)
+* SVN uses trees, not graphs
+
+=== SVN Merge vs Reintegrate?
+
+.SVN Merge
+[graphviz, svn-merge, svg]
+--
+include::./graphviz/svn-merge.dot[]
+--
+
+.SVN Reintegrate
+[graphviz, svn-reintegrate, svg]
+--
+include::./graphviz/svn-reintegrate.dot[]
+--
+
+* Merge: One up to all revisions
+* Reintegrate: Always all revisions
 
 == What is GIT?
 
-=== How does Git work?
+[graphviz, git-system, svg]
+--
+include::./graphviz/git-system.dot[]
+--
 
-== Why using Git over SVN?
+* Distributed repositories
+* Full repository on workstation
+* No server, no problem
 
-=== Performance
+=== How Git stores data?
 
-=== Distributed Repository
+* Versions are represented as a graph
+* A branch is just a pointer
+* Series of snapshots referenced by pointers
 
-=== Branching Models
-
-== Why using a Git-Server?
-
-=== Not supported by Git
+=== How Git Branching works?

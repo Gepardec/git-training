@@ -13,6 +13,7 @@ ifndef::sourcedir[:sourcedir: ../../main/java]
 
 == What is SVN?
 
+.SVN System
 [graphviz, svn-system, svg]
 --
 include::./graphviz/svn-system.dot[]
@@ -30,6 +31,7 @@ include::./graphviz/svn-system.dot[]
 
 === How SVN Branch works?
 
+.SVN Branch
 [graphviz, svn-branch, svg]
 --
 include::./graphviz/svn-branch.dot[]
@@ -59,6 +61,7 @@ include::./graphviz/svn-reintegrate.dot[]
 
 == What is GIT?
 
+.Git System
 [graphviz, git-system, svg]
 --
 include::./graphviz/git-system.dot[]
@@ -70,6 +73,7 @@ include::./graphviz/git-system.dot[]
 
 === How Git stores data?
 
+.Git Data Storage
 [graphviz, git-data-storage, svg]
 --
 include::./graphviz/git-data-storage.dot[]
@@ -81,14 +85,38 @@ include::./graphviz/git-data-storage.dot[]
 
 === How Git Branching works?
 
+.Git Branch Model    
 [graphviz, git-branch-model, svg]
---
+----
 include::./graphviz/git-branch-model.dot[]
---
+----
 
 * Master branch holds released commits
-* Dev branch contains unreleased commits
+* Dev branch contains unreleased commits  
 * Feature branch contains feature commits
 * Hotfix branches contains hotfix commits
 
-=== Git Merge vs. Rebase?
+=== When Git Fast Forward?  
+
+=== How To Git Fast Forward?  
+
+=== When Git Merge Commit?   
+
+.Git Merge Commit Situation
+[graphviz, git-merge-fast-fwd-1, svg]
+----
+include::./graphviz/git-merge-1.dot[]  
+----
+
+* Master branch is ahead of Hotfix branch
+* Both have a common ancestor
+
+=== How To Git Merge?
+
+[graphviz, git-merge-fast-fwd-2, svg]
+---- 
+include::./graphviz/git-merge-2.dot[] 
+----
+
+* Merge of **C 4** and **C 5** via new commit
+* New commit has two predecessors (Merge Commit)

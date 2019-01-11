@@ -2,12 +2,12 @@ digraph svn_branch {
         rankdir="LR";
         bgcolor="transparent";
 
-        node[width=0.5,height=0.5, shape=folder,fontsize=12.0];
+        node[width=0.6,height=0.6, shape=folder,fontsize=12.0];
         "trunk"[label="trunk",group="trunk",style="bold"];
         "feature_1"[label="feature/jira-1",group="feature_1",style="bold"];
         "feature_2"[label="feature/jira-2",group="feature_2",style="bold"];
 
-        node[width=0.5,height=0.5, shape=note,fontsize=12.0];
+        node[width=0.6,height=0.6, shape=note,fontsize=12.0];
         "file_1"[label="script.sh",group="trunk",color="orange"]
         "file_2"[label="",group="trunk",style="dashed"]
         "file_3"[label="Main.java",group="trunk",color="green"]

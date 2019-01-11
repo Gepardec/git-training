@@ -14,7 +14,7 @@ digraph git_branch_model {
   feature [group="feature"]
 
   /* Nodes representing commit */
-  node[width=0.6,height=0.6, fontsize=10.0,style="",shape=circle]
+  node[width=0.6,height=0.6, fontsize=12.0,style="",shape=circle]
   C_1[label="C 1", group="master"]
   C_2[label="C 2", group="dev"]
   C_3[label="C 3", group="hotfix"]

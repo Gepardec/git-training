@@ -2,15 +2,15 @@ digraph svn_system {
         bgcolor="transparent";
         splines=line;
 
-        node[width=0.5,height=0.5, shape=circle,fontsize=12.0,shape="box3d"];
+        node[width=0.6,height=0.6, shape=circle,fontsize=12.0,shape="box3d"];
         "git"[label="Git Server",style="bold"];
 
-        node[width=0.3,height=0.3, shape=circle,fontsize=10.0,shape="box",style="dashed"];
+        node[width=0.4,height=0.4, shape=circle,fontsize=10.0,shape="box",style="dashed"];
         "git-dev-1"[label="Local git-repo",group="git-local"];
         "git-dev-2"[label="Local git-repo",group="git-local"];
         "git-dev-3"[label="Local git-repo",group="git-local"];
 
-        node[width=0.5,height=0.5, shape=circle,fontsize=10.0,style="bold",shape="box"];
+        node[width=0.6,height=0.6, shape=circle,fontsize=10.0,style="bold",shape="box"];
         "dev-1"[label="Developer 1"];
         "dev-2"[label="Developer 2"];
         "dev-3"[label="Developer 3"];

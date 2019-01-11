@@ -2,11 +2,11 @@ digraph svn_merge {
         rankdir="LR";
         bgcolor="transparent";
 
-        node[width=0.5,height=0.5, shape=folder,fontsize=12.0];
+        node[width=0.6,height=0.6, shape=folder,fontsize=12.0];
         "feature_1"[label="feature/jira-1",group="feature_1",style="bold"];
         "feature_2"[label="feature/jira-2",group="feature_2",style="bold"];
 
-        node[width=0.5,height=0.5, shape=note,fontsize=12.0];
+        node[width=0.6,height=0.6, shape=note,fontsize=12.0];
         "file__1"[label="script.sh '",group="feature_1",color="green"]
         "file__2"[label="Test.java '",group="feature_1",color="green"]
         "file__3"[label="",group="feature_1",style="dashed",color="red"]

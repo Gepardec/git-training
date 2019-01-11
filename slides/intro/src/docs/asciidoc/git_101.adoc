@@ -87,9 +87,9 @@ include::./graphviz/git-data-storage.dot[]
 
 .Git Branch Model    
 [graphviz, git-branch-model, svg]
-----
+--
 include::./graphviz/git-branch-model.dot[]
-----
+--
 
 * Master branch holds released commits
 * Dev branch contains unreleased commits  
@@ -104,9 +104,9 @@ include::./graphviz/git-branch-model.dot[]
 
 .Git Merge Commit Situation
 [graphviz, git-merge-fast-fwd-1, svg]
-----
+--
 include::./graphviz/git-merge-1.dot[]  
-----
+--
 
 * Master branch is ahead of Hotfix branch
 * Both have a common ancestor
@@ -114,9 +114,9 @@ include::./graphviz/git-merge-1.dot[]
 === How To Git Merge?
 
 [graphviz, git-merge-fast-fwd-2, svg]
----- 
+--
 include::./graphviz/git-merge-2.dot[] 
-----
+--
 
 * Merge of **C 4** and **C 5** via new commit
 * New commit has two predecessors (Merge Commit)

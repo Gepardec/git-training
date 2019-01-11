@@ -70,8 +70,25 @@ include::./graphviz/git-system.dot[]
 
 === How Git stores data?
 
+[graphviz, git-data-storage, svg]
+--
+include::./graphviz/git-data-storage.dot[]
+--
+
 * Versions are represented as a graph
-* A branch is just a pointer
-* Series of snapshots referenced by pointers
+* Each version is a snapshot
+* Snapshots contains whole state
 
 === How Git Branching works?
+
+[graphviz, git-branch-model, svg]
+--
+include::./graphviz/git-branch-model.dot[]
+--
+
+* Master branch holds released commits
+* Dev branch contains unreleased commits
+* Feature branch contains feature commits
+* Hotfix branches contains hotfix commits
+
+=== Git Merge vs. Rebase?

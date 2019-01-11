@@ -18,6 +18,7 @@ node_modules/
 node/
 etc/
 .idea
+generated-images/
 
 # Compiled class file
 *.class

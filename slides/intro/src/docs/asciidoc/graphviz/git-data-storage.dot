@@ -1,0 +1,50 @@
+digraph git_branch_model {
+  splines=line
+  rankdir="TB"
+  bgcolor="transparent"
+
+  /* Commit node config */
+  edge[style="", weight=2, arrowhead=open]
+  node[style="", width=0.6, height=0.6, fontsize=12.0, shape=circle]
+
+  c_1 [label="S 1"]
+  c_2 [label="S 2"]
+  c_3 [label="S 3"]
+  c_4 [label="S 4"]
+
+  c_1 -> c_2 -> c_3 -> c_4 [dir=back]
+
+  /* File node config */
+  edge[style="", weight=2, arrowhead=open, dir=back]
+  node[style="", width=0.6, height=0.6, fontsize=12.0, shape=note]
+
+  /* initial nodes */
+  node[style="bold"]
+  file_1 [label="Model.java", group="file_1"]
+  file_2 [label="View.java", group="file_2"]
+  file_3 [label="Controller.java", group="file_3"]
+
+  /* changed nodes */
+  node[style="bold", color="red"]
+  file_1_ [label="Model.java '", group="file_1"]
+
+  file_2__ [label="View.java '", group="file_2"]
+
+  file_1___ [label="Model.java ''", group="file_1"]
+  file_3___ [label="Controller.java '", group="file_3"]
+
+  /* 1. Commit */
+  file_1 -> file_1_
+
+  /* 2. Commit */
+  file_2 -> file_2__
+
+  /* 3. Commit */
+  file_1_ -> file_1___
+  file_3 -> file_3___
+
+  {rank=same; c_1 file_3 file_2 file_1}
+  {rank=same; c_2 file_1_}
+  {rank=same; c_3 file_2__}
+  {rank=same; c_4 file_1___ file_3___}
+}

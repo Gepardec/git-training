@@ -23,7 +23,7 @@ digraph git_merge_fast_fwd {
     c_0 -> c_1 -> c_2
     c_2 -> c_3
     master -> c_4 [dir=""]
-    edge[color=red]
+    edge[color=green]
     c_3 -> c_4
 
     {rank=same; c_4 master}

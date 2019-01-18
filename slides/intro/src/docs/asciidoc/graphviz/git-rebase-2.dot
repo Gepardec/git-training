@@ -28,9 +28,9 @@ digraph git_merge_fast_fwd {
     c_2 -> c_4_
     master -> c_3 [dir=""]
     feature -> c_4 [dir=""]
-    c_3 -> c_4
     edge[color=green]
-    master -> c_4[label="Fast Fwd.", dir=""]
+    c_3 -> c_4
+    master -> c_4[style=dashed, label="Fast Fwd.", dir=""]
 
     {rank=same; c_3 c_4_ master}
     {rank=same; c_4 feature}

@@ -19,13 +19,13 @@ digraph git_branch_model {
   node[style="",  fontsize=12.0, shape=note]
 
   /* initial nodes */
-  node[style="bold"]
+  node[style="bold",color=orange]
   file_1 [label="Model.java", group="file_1"]
   file_2 [label="View.java", group="file_2"]
   file_3 [label="Controller.java", group="file_3"]
 
   /* changed nodes */
-  node[style="bold", color="red"]
+  node[style="bold", color="blue"]
   file_1_ [label="Model.java '", group="file_1"]
 
   file_2__ [label="View.java '", group="file_2"]
@@ -33,6 +33,7 @@ digraph git_branch_model {
   file_1___ [label="Model.java ''", group="file_1"]
   file_3___ [label="Controller.java '", group="file_3"]
 
+  edge[color=green]
   /* 1. Commit */
   file_1 -> file_1_
 

@@ -36,26 +36,26 @@ digraph git_branch_model {
 
   edge[arrowhead=none, style="dashed"]
   /* Define master branch commits */
-  master -> C_1 [arrowhead=open, color="red", style="bold"]
+  master -> C_1 [arrowhead=open, color="green", style="bold"]
   C_1 -> C_2_M [arrowhead=none, style="dashed"]
   C_2_M -> C_3_M
   C_3_M -> C_4_M
 
   /* Define dev branch commits */
   dev -> C_1_D
-  C_1_D -> C_2 [arrowhead=open, color="red", style="bold"]
+  C_1_D -> C_2 [arrowhead=open, color="green", style="bold"]
   C_2 -> C_3_D
   C_3_D -> C_4_D
 
   /* Define hotfix branch commits */
   hotfix -> C_2_H
-  C_2_H -> C_3 [arrowhead=open, color="red", style="bold"]
+  C_2_H -> C_3 [arrowhead=open, color="green", style="bold"]
 
   /* Define feature branch commits */
   feature -> C_3_F
-  C_3_F -> C_4 [arrowhead=open, color="red", style="bold"]
+  C_3_F -> C_4 [arrowhead=open, color="green", style="bold"]
 
-  edge[color="red", arrowhead=open,  style="bold"]
+  edge[color="green", arrowhead=open,  style="bold"]
   /* 1. inter branch commit */
   C_1 -> C_1_D
 

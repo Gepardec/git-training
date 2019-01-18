@@ -22,7 +22,7 @@ digraph git_merge_fast_fwd {
 
     edge[style=""]
     c_0 -> c_1 -> c_2
-    edge[color=red]
+    edge[color=orange]
     c_2 -> c_3
     c_3 -> c_4
 

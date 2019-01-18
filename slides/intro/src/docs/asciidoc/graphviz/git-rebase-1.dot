@@ -3,7 +3,7 @@ digraph git_merge_fast_fwd {
     rankdir=LR
     bgcolor=transparent
 
-    node[width=0.3, shape=rect,fontsize=12.0, style="", color=orange]
+    node[height=0.3, shape=rect,fontsize=12.0, style="", color=orange]
     edge[dir=back, style=""]
     master [label="master"]
     feature [label="feature"]
@@ -13,28 +13,25 @@ digraph git_merge_fast_fwd {
 
     c_0 [label="C 0", group=master]
     c_1 [label="C 1", group=master]
-    c_2 [label="C 2", group=master]
-    c_5 [label="C 5", group=branch]
+    c_3 [label="C 3", group=branch]
+    c_4 [label="C 4", group=master]
 
     /* Marked nodes */
-    node[shape=circle, color=blue, style=bold]
-    c_3 [label="C 3", group=master]
-    c_4 [label="C 4", group=branch]
+    node[color=blue, style=bold]
+    c_2 [label="C 2", group=master]
 
     edge[style=""]
     c_0 -> c_1 -> c_2
-    c_2 -> c_3
-    c_2 -> c_4
     edge[color=red]
-    c_3 -> c_4
+    c_2 -> c_4
+    c_2 -> c_3
 
     edge[color=""]
     master -> c_3 [dir=""]
-    c_5 -> feature
+    c_4 -> feature
 
-    c_4 -> c_5
-    c_3 -> c_5 [style=dashed, color=red]
 
-    {rank=same; master c_4 c_3 }
-    {rank=same; feature c_5 }
+    {rank=same; master c_3}
+    {rank=same; c_4 feature}
+
 }

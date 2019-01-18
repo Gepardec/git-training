@@ -166,3 +166,30 @@ include::./graphviz/git-merge-conflict-2.dot[]
 ** Git pauses process __(Commit changes are now local changes)__
 ** Conflicts have to be manually resolved __(Each conflicting file)__
 ** Merge commit is manually created __(Commit conflict resolution an changes!!)__
+
+=== When Git Rebase?
+
+.Git Rebase Situation
+[graphviz, git-rebase-1, svg]
+--
+include::./graphviz/git-rebase-1.dot[]
+--
+
+* Master branch diverged from Feature branch
+* Same situation as with a Git Merge
+* Rebasing does not produce a merge commit
+* Replays Feature branch commit on Master branch
+
+=== How to Git Rebase?
+
+.Git Rebase Solution
+[graphviz, git-rebase-2, svg]
+--
+include::./graphviz/git-rebase-2.dot[]
+--
+
+* Start on common ancestor of Master and Feature branch
+* Replay Feature branch commits on Master branch
+* Master branch pointer moved to new last commit via fast fwd.
+* No merge commit (Cleaner history)
+

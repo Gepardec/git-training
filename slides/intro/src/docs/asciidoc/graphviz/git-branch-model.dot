@@ -4,17 +4,17 @@ digraph git_branch_model {
   bgcolor="transparent"
 
   /* Global Node/Edge config */
-  edge[weight=2,arrowhead=open]
+  edge[arrowhead=open]
 
   /* Nodes representing the branches */
-  node[width=0.6,height=0.6, fontsize=12.0,style="bold", shape=folder, color=orange]
+  node[ fontsize=12.0,style="bold", shape=folder, color=orange]
   master [group="master"]
   dev [group="dev"]
   hotfix [group="hotfix"]
   feature [group="feature"]
 
   /* Nodes representing commit */
-  node[width=0.6,height=0.6, fontsize=12.0,style="",shape=circle, color=""]
+  node[ fontsize=12.0,style="",shape=circle, color=""]
   C_1[label="C 1", group="master"]
   C_2[label="C 2", group="dev"]
   C_3[label="C 3", group="hotfix"]

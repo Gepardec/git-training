@@ -1,15 +1,15 @@
 digraph svn_system {
         bgcolor="transparent";
 
-        node[width=0.6,height=0.6, shape=circle,fontsize=12.0,shape="box3d"];
+        node[shape=circle,fontsize=12.0,shape="box3d"];
         "svn"[label="SVN Server",style="bold"];
 
-        node[width=0.6,height=0.6, shape=circle,fontsize=10.0,style="bold",shape="box"];
+        node[shape=circle,fontsize=10.0,style="bold",shape="box"];
         "dev_1"[label="Developer 1"];
         "dev_2"[label="Developer 2"];
         "dev_3"[label="Developer 3"];
 
-        edge[weight=2,arrowhead=open,dir="back"]
+        edge[arrowhead=open,dir="back"]
         "svn" -> "dev_1"
         "svn" -> "dev_2"
         "svn" -> "dev_3"

@@ -4,8 +4,8 @@ digraph git_branch_model {
   bgcolor="transparent"
 
   /* Commit node config */
-  edge[style="", weight=2, arrowhead=open]
-  node[style="", width=0.6, height=0.6, fontsize=12.0, shape=circle]
+  edge[style="",  arrowhead=open]
+  node[style="",  fontsize=12.0, shape=circle]
 
   c_1 [label="S 1"]
   c_2 [label="S 2"]
@@ -15,8 +15,8 @@ digraph git_branch_model {
   c_1 -> c_2 -> c_3 -> c_4 [dir=back]
 
   /* File node config */
-  edge[style="", weight=2, arrowhead=open, dir=back]
-  node[style="", width=0.6, height=0.6, fontsize=12.0, shape=note]
+  edge[style="",  arrowhead=open, dir=back]
+  node[style="",  fontsize=12.0, shape=note]
 
   /* initial nodes */
   node[style="bold"]

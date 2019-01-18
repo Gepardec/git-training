@@ -1,1 +1,7 @@
-# git-training
+= Git training
+
+This repository holds the sources for our git training, which is meant to introduce Git to
+software developers. +
+
+== Presentations
+You find the presentations at link:./slides[Git slides].

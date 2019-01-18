@@ -34,7 +34,7 @@ digraph git_branch_model {
   /* Connect hidden branch name nodes
   master -> dev -> hotfix -> feature  [style="invis"] */
 
-  edge[arrowhead=none, style="dashed"]
+  edge[arrowhead=none, style="dashed",color=gray]
   /* Define master branch commits */
   master -> C_1 [arrowhead=open, color="green", style="bold"]
   C_1 -> C_2_M [arrowhead=none, style="dashed"]

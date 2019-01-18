@@ -1,0 +1,43 @@
+digraph git_merge_fast_fwd {
+    splines=line
+    rankdir=LR
+    bgcolor=transparent
+
+    node[width=0.3, shape=rect,fontsize=12.0, style="", color=orange]
+    edge[dir=back, style=""]
+    master [label="master"]
+    hotfix [label="hotfix"]
+    feature [label="feature"]
+    release_1 [label="v1.0"]
+    release_1_1 [label="v1.1"]
+    release_2 [label="v2.0"]
+    c_0_hash [label="9e288d60..."]
+    c_1_hash [label="1f657438..."]
+    c_2_hash [label="d813d7fa..."]
+    c_3_hash [label="7f70601d..."]
+
+    node[ shape=circle,fontsize=12.0, style="", color=""]
+    edge[dir=back, style=""]
+
+    c_0 [label="C 0", group=master]
+    c_1 [label="C 1", group=master]
+    c_2 [label="C 2", group=master]
+    c_3 [label="C 3", group=master]
+
+    /* Main commits */
+    edge[style=""]
+    c_0 -> c_1 -> c_2 -> c_3
+
+    /* Commit Pointer */
+    edge[color="", dir=""]
+    release_1 -> c_0_hash -> c_0
+    release_1_1 -> hotfix -> c_1_hash -> c_1
+    release_2 -> feature -> c_2_hash -> c_2
+    master -> c_3_hash -> c_3
+
+    {rank=same; release_1 c_0_hash c_0}
+    {rank=same; release_1_1 hotfix c_1_hash c_1}
+    {rank=same; release_2 feature c_2_hash c_2}
+    {rank=same; master c_3_hash c_3}
+
+}

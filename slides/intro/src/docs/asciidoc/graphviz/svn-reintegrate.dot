@@ -18,11 +18,9 @@ digraph svn_reintegrate {
     edge[arrowhead=open,dir="back"];
     "feature_1" -> "feature_2"[label="Reintegrate",color="green"];
 
-    edge[arrowhead=none,dir="forward",style=dashed];
+    edge[arrowhead=none,dir="forward",style=dashed,color=gray];
     "feature_1" -> "file__1";
     "feature_2" -> "file___1";
-
-    edge[arrowhead=none,dir="forward",style=dashed];
     "file__1" -> "file__2";
     "file__2" -> "file__3";
     "file__3" -> "file__4";

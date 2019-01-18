@@ -83,6 +83,20 @@ include::./graphviz/git-data-storage.dot[]
 * Each version is a snapshot
 * Snapshots contains whole state
 
+=== What is a Git Commit, Branch, Tag?
+
+.Git Commit, Branch, Tag Example
+[graphviz, git-commit-branh-tag, svg]
+--
+include::./graphviz/git-commit-branch-tag.dot[]
+--
+
+* A commit is a hash
+* A commit can be labeled __(branch, tag)__
+* A label is a pointer to a commit __(hash)__
+* Multiple labels __(pointers)__ for a commit possible
+* A tag is a immutable reference to a commit
+
 === How Git Branching works?
 
 .Git Branch Model    

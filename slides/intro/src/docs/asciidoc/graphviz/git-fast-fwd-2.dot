@@ -3,7 +3,7 @@ digraph git_merge_fast_fwd {
     rankdir=LR
     bgcolor=transparent
 
-    node[height=0.3, shape=rect,fontsize=12.0, style="", color=orange]
+    node[width=0.3, shape=rect,fontsize=12.0, style="", color=orange]
     edge[dir=back, style=""]
     master [label="master"]
 

@@ -25,12 +25,10 @@ digraph svn_branch {
     "trunk" -> "feature_1";
     "feature_1" -> "feature_2";
 
-    edge[arrowhead=none,dir="forward",style=dashed];
+    edge[arrowhead=none,dir="forward",style=dashed, color=gray];
     "trunk" -> "file_1";
     "feature_1" -> "file__1";
     "feature_2" -> "file___1";
-
-    edge[arrowhead=none,dir="forward"];
     "file_1" -> "file_2";
     "file_2" -> "file_3";
     "file_3" -> "file_4";

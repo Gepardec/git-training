@@ -1,50 +1,50 @@
 digraph svn_branch {
-        rankdir="LR";
-        bgcolor="transparent";
+    rankdir="LR";
+    bgcolor="transparent";
 
-        node[width=0.6,height=0.6, shape=folder,fontsize=12.0];
-        "trunk"[label="trunk",group="trunk",style="bold"];
-        "feature_1"[label="feature/jira-1",group="feature_1",style="bold"];
-        "feature_2"[label="feature/jira-2",group="feature_2",style="bold"];
+    node[width=0.6,height=0.6, shape=folder,fontsize=12.0, style="bold", color=orange];
+    "trunk"[label="trunk",group="trunk"];
+    "feature_1"[label="feature/jira-1",group="feature_1"];
+    "feature_2"[label="feature/jira-2",group="feature_2"];
 
-        node[width=0.6,height=0.6, shape=note,fontsize=12.0];
-        "file_1"[label="script.sh",group="trunk",color="orange"]
-        "file_2"[label="",group="trunk",style="dashed"]
-        "file_3"[label="Main.java",group="trunk",color="green"]
-        "file_4"[label="Util.java",group="trunk",color="orange"]
-        "file__1"[label="script.sh '",group="feature_1",color="orange"]
-        "file__2"[label="Test.java '",group="feature_1",color="orange"]
-        "file__3"[label="'",group="feature_1",style="dashed"]
-        "file__4"[label="Util.java '",group="feature_1",color="orange"]
-        "file___1"[label="script.sh ''",group="feature_2",color="orange"]
-        "file___2"[label="Test.java ''",group="feature_2",color="orange"]
-        "file___3"[label="",group="feature_2",style=dashed]
-        "file___4"[label="Model.java",group="feature_2",color="green"]
+    node[width=0.6,height=0.6, shape=note,fontsize=12.0, style="", color=""];
+    "file_1"[label="script.sh",group="trunk",color="blue"]
+    "file_2"[label="",group="trunk",style="dashed"]
+    "file_3"[label="Main.java",group="trunk",color="green"]
+    "file_4"[label="Util.java",group="trunk",color="blue"]
+    "file__1"[label="script.sh '",group="feature_1",color="blue"]
+    "file__2"[label="Test.java '",group="feature_1",color="blue"]
+    "file__3"[label="'",group="feature_1",style="dashed"]
+    "file__4"[label="Util.java '",group="feature_1",color="blue"]
+    "file___1"[label="script.sh ''",group="feature_2",color="blue"]
+    "file___2"[label="Test.java ''",group="feature_2",color="blue"]
+    "file___3"[label="",group="feature_2",style=dashed]
+    "file___4"[label="Model.java",group="feature_2",color="green"]
 
-        edge[weight=2,arrowhead=open,dir="back"];
-        "trunk" -> "feature_1";
-        "feature_1" -> "feature_2";
+    edge[weight=2,arrowhead=open,dir="back"];
+    "trunk" -> "feature_1";
+    "feature_1" -> "feature_2";
 
-        edge[weight=2,arrowhead=none,dir="forward"];
-        "trunk" -> "file_1";
-        "feature_1" -> "file__1";
-        "feature_2" -> "file___1";
+    edge[weight=2,arrowhead=none,dir="forward", style=dashed];
+    "trunk" -> "file_1";
+    "feature_1" -> "file__1";
+    "feature_2" -> "file___1";
 
-        edge[weight=2,arrowhead=none,dir="forward"];
-        "file_1" -> "file_2";
-        "file_2" -> "file_3";
-        "file_3" -> "file_4";
-        "file__1" -> "file__2";
-        "file__2" -> "file__3";
-        "file__3" -> "file__4";
-        "file___1" -> "file___2";
-        "file___2" -> "file___3";
-        "file___3" -> "file___4";
+    edge[weight=2,arrowhead=none,dir="forward"];
+    "file_1" -> "file_2";
+    "file_2" -> "file_3";
+    "file_3" -> "file_4";
+    "file__1" -> "file__2";
+    "file__2" -> "file__3";
+    "file__3" -> "file__4";
+    "file___1" -> "file___2";
+    "file___2" -> "file___3";
+    "file___3" -> "file___4";
 
-        edge[weight=2,arrowhead=open,style="dashed"];
-        "file__1" -> "file_1"
-        "file___1" -> "file__1"
-        "file___2" -> "file__2"
-        "file__4" -> "file_4"
+    edge[weight=2,arrowhead=open,style="", color=green];
+    "file__1" -> "file_1"
+    "file___1" -> "file__1"
+    "file___2" -> "file__2"
+    "file__4" -> "file_4"
 
 }

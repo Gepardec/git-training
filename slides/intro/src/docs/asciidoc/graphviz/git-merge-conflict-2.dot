@@ -13,9 +13,9 @@ digraph git_merge_fast_fwd {
     c_0 [label="C 0", group=master]
     c_1 [label="C 1", group=master]
     c_2 [label="C 2", group=master]
-    c_4 [label="C 4", group=master]
+    c_3 [label="C 3", group=master]
+    c_4 [label="C 4", group=branch]
     c_5 [label="C 5", group=branch]
-    c_3 [label="C 3", group=branch]
 
     /* Marked nodes */
     node[shape=ellipse, color=blue, style=bold]
@@ -23,17 +23,16 @@ digraph git_merge_fast_fwd {
 
     edge[style=""]
     c_0 -> c_1 -> c_2
-    c_2 -> c_4
     c_2 -> c_3
-    c_3 -> c_5
+    c_2 -> c_4
 
     edge[color=""]
     master -> c_6 [dir=""]
 
-    c_4 -> c_6 [color=red]
+    c_4 -> c_5
+    c_3 -> c_6 [color=red]
     c_5 -> c_6 [color=red]
 
-    {rank=same; c_4 c_3}
-    {rank=same; master c_6}
-
+    {rank=same; c_3 c_4 }
+    {rank=same; master c_6 }
 }

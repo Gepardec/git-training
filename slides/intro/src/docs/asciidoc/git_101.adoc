@@ -98,25 +98,71 @@ include::./graphviz/git-branch-model.dot[]
 
 === When Git Fast Forward?  
 
+.Git Fast Fwd. Situation
+[graphviz, git-fast-fwd-1, svg]
+--
+include::./graphviz/git-fast-fwd-1.dot[]
+--
+
+* Master branch hasn't diverged from Hotfix branch
+* Meaning, no commits in Master which are not in Hotfix branch
+
 === How To Git Fast Forward?  
+
+.Git Fast Fwd. Solution
+[graphviz, git-fast-fwd-2, svg]
+--
+include::./graphviz/git-fast-fwd-2.dot[]
+--
+
+* Just an ordinary merge, but no merge commit necessary
+* Commits moved from Hotfix -> Master branch
+* Master pointer fast forwarded to last commit
 
 === When Git Merge Commit?   
 
 .Git Merge Commit Situation
-[graphviz, git-merge-fast-fwd-1, svg]
+[graphviz, git-merge-1, svg]
 --
 include::./graphviz/git-merge-1.dot[]  
 --
 
-* Master branch is ahead of Hotfix branch
-* Both have a common ancestor
+* Master has diverged from Hotfix branch
+* But, both have a common ancestor
 
 === How To Git Merge?
 
-[graphviz, git-merge-fast-fwd-2, svg]
+.Git Merge Commit Solution
+[graphviz, git-merge-2, svg]
 --
 include::./graphviz/git-merge-2.dot[] 
 --
 
 * Merge of **C 4** and **C 5** via new commit
 * New commit has two predecessors (Merge Commit)
+* Merge commit automatically created (If no conflict)
+
+=== When Git Merge Conflict?
+
+.Git Merge Conflict Situation
+[graphviz, git-merge-conflict-1, svg]
+--
+include::./graphviz/git-merge-conflict-1.dot[]
+--
+
+* Master Branch diverged from Feature branch
+* Master Branch commits not in feature branch
+* Master has same file changed as Feature branch
+
+=== How Git Merge Conflict?
+
+.Git Merge Conflict Solution
+[graphviz, git-merge-conflict-2, svg]
+--
+include::./graphviz/git-merge-conflict-2.dot[]
+--
+
+* Just an ordinary merge but:
+** Git pauses process __(Commit changes are now local changes)__
+** Conflicts have to be manually resolved __(Each conflicting file)__
+** Merge commit is manually created __(Commit conflict resolution an changes!!)__

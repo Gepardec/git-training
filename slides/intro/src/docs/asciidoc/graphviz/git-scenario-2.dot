@@ -1,0 +1,37 @@
+digraph git_branch_model {
+  splines=line
+  rankdir="LR"
+  bgcolor="transparent"
+
+  /* Global Node/Edge config */
+  edge[arrowhead=open]
+
+  /* Nodes representing the branches */
+  node[ fontsize=12.0,style="bold", shape=folder, color=orange]
+  master [group="master"]
+  dev [group="dev"]
+  feature_1 [label="feature/1", group="feature_1"]
+
+  /* Nodes representing commit */
+  node[ fontsize=12.0,style="",shape=circle, color=""]
+  C_1[label="C 1", group="master"]
+
+  /* Nodes representing pointer */
+  node[color="blue"]
+  C_1_D [label="C 1", group="dev"]
+  C_1_F_1 [label="C 1", group="feature_1"]
+
+  edge[arrowhead=none, style="dashed",color=gray]
+  /* Define master branch commits */
+  master -> C_1 [arrowhead=open, color="green", style="bold"]
+  feature_1 -> C_1_F_1
+
+  /* Define dev branch commits */
+  dev -> C_1_D
+
+  edge[color="green", arrowhead=open,  style="bold"]
+  /* 1. inter branch commit */
+  C_1 -> C_1_D -> { C_1_F_1 }
+
+  {rank=same; master dev feature_1}
+}

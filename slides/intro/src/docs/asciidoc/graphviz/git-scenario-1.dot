@@ -1,0 +1,21 @@
+digraph git_branch_model {
+  splines=line
+  rankdir="LR"
+  bgcolor="transparent"
+
+  /* Global Node/Edge config */
+  edge[arrowhead=open]
+  node[fontsize=15.0]
+
+  /* Nodes representing the branches */
+  node[style="bold", shape=folder, color=orange]
+  master [group="master"]
+
+  /* Nodes representing commit */
+  node[style="",shape=circle, color=""]
+  C_1[label="C 1", group="master"]
+
+  edge[arrowhead=none, style="dashed",color=gray]
+  /* Define master branch commits */
+  master -> C_1 [arrowhead=open, color="green", style="bold"]
+}

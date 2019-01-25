@@ -133,7 +133,7 @@ include::./graphviz/git-fast-fwd-2.dot[]
 * Commits moved from Hotfix -> Master branch
 * Master pointer fast forwarded to last commit
 
-=== When Git Merge Commit?   
+=== When Git Merge?   
 
 .Git Merge Commit Situation
 [graphviz, git-merge-1, svg]
@@ -168,7 +168,7 @@ include::./graphviz/git-merge-conflict-1.dot[]
 * Master Branch commits not in feature branch
 * Master has same file changed as Feature branch
 
-=== How Git Merge Conflict?
+=== How Resolve a Git Merge Conflict?
 
 .Git Merge Conflict Solution
 [graphviz, git-merge-conflict-2, svg]
@@ -194,9 +194,9 @@ include::./graphviz/git-rebase-1.dot[]
 * Rebasing does not produce a merge commit
 * Replays Feature branch commit on Master branch
 
-=== How to Git Rebase?
+=== How To Git Rebase?
 
-.Git Rebase Solution
+.Git Rebase Solution 
 [graphviz, git-rebase-2, svg]
 --
 include::./graphviz/git-rebase-2.dot[]
@@ -207,3 +207,146 @@ include::./graphviz/git-rebase-2.dot[]
 * Master branch pointer moved to new last commit via fast fwd.
 * No merge commit (Cleaner history)
 
+== Git 101 Hands On 
+
+* How to work with git in development scenarios with the CLI?
+* How and when to use branches?
+* How to resolve merge conflicts?
+
+=== Scenario
+
+.Scenario
+[graphviz, git-scenario, svg]
+--
+include::./graphviz/git-scenario.dot[] 
+--
+
+* Developers are separated by teams
+* Developers work on features/hotfixes the same time
+* Conflicts will sometimes occur
+* Hotfixes need always to be merged!
+
+=== Prepare a Git Repository
+
+* We want to create a git repository for our sources
+* We want to initially check in our sources
+* Our sources are a simple README.adoc file
+
+[source,asciidoc]
+--
+= My app documentation
+...
+--
+
+=== What has happened?
+
+.Initialized Git Repository
+[graphviz, git-scenario-1, svg]
+-- 
+include::./graphviz/git-scenario-1.dot[]
+--
+
+[source,bash]
+--
+include::./examples/101/101.sh[tag=init]
+--
+
+* Git created *.git* directory
+* Branch *master* created by git
+
+=== Prepare the branches
+
+* We want to implement the standard *branch model* (master, dev, feature)
+* We want branch *dev* to be the main branch
+* We want branch *master* to only contain released commits
+
+=== What has happened?
+
+.Branch Model
+[graphviz, git-scenario-2, svg]
+--
+include::./graphviz/git-scenario-2.dot[]
+--
+
+[source,bash]
+--
+include::./examples/101/101.sh[tag=branch-model]
+--
+
+* Pointer (Labels) have been created for the initial commit *(dev, feature)*
+* Still, we have only one commit
+
+=== Make the first release
+
+* We want to make our first release
+* We want to ensure that the released state cannot be changed at all
+
+=== What has happened?
+
+.First release tag
+[graphviz, git-scenario-3, svg]
+--
+include::./graphviz/git-scenario-3.dot[]  
+--
+
+[source,bash]
+--
+include::./examples/101/101.sh[tag=first-release] 
+--
+
+* A special Pointer (Tag) has been created for the initial commit
+
+=== Provide a fix for branch dev
+
+* A bug was found on branch dev
+* Seems the merge/pull request wasn't handled properly
+* We want to provide a fix for the branch dev
+
+=== What has happened?
+
+.Diverging branches
+[graphviz, git-scenario-4, svg]
+--
+include::./graphviz/git-scenario-4.dot[]
+-- 
+
+[source,bash]
+--
+include::./examples/101/101.sh[tag=conflicting-commit] 
+--
+
+=== Development on branch feature
+
+* We want to develop a feature separated from others
+* We want our commits to not interfere with those of other features
+* Unfortunately, we will have to produce an conflict
+
+=== What has happened?
+
+.Feature development
+[graphviz, git-scenario-5, svg]
+--
+include::./graphviz/git-scenario-5.dot[]
+-- 
+     
+* Commits between branch *dev* and *feature* conflict
+* For now, we have no problem, because we are on different branches
+* We will have to take care of it, when we merge the conflicting branches
+
+=== Provide a hotfix
+
+* We have to fix a production problem
+* We have to provide a fix for the current release
+* We want an own branch holding the *hotfix* commits
+* We want to release the hotfix 
+* We want to ensure that the hotfix gets reintegrated!
+
+=== What has happened?
+
+.Hotfix branch
+[graphviz, git-scenario-6, svg]
+--
+include::./graphviz/git-scenario-6.dot[]
+-- 
+
+* NOT DONE YET !!!!!!

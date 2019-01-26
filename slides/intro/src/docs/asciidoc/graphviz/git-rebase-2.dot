@@ -6,7 +6,6 @@ digraph git_merge_fast_fwd {
     node[shape=rect,fontsize=12.0, style="", color=orange]
     edge[dir=back, style=""]
     master [label="master"]
-    feature [label="feature"]
 
     node[shape=circle,fontsize=12.0, style="", color=""]
     edge[dir=back, style=""]
@@ -25,14 +24,11 @@ digraph git_merge_fast_fwd {
     edge[style=""]
     c_0 -> c_1 -> c_2
     c_2 -> c_3
-    master -> c_3 [dir=""]
-    feature -> c_4 [dir=""]
+    master -> c_4 [dir=""]
     edge[color=green]
     c_3 -> c_4
-    master -> c_4[style=dashed, label="Fast Fwd.", dir=""]
     edge[color=gray, style=dashed]
     c_2 -> c_4_
 
-    {rank=same; c_3 c_4_ master}
-    {rank=same; c_4 feature}
+    {rank=same; c_4 master}
 }

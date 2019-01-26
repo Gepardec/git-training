@@ -3,12 +3,12 @@ digraph git_merge_fast_fwd {
     rankdir=LR
     bgcolor=transparent
 
-    node[width=0.3, shape=rect,fontsize=12.0, style="", color=orange]
+    node[width=0.3, shape=rect,fontsize=15.0, style="", color=orange]
     edge[dir=back, style=""]
     master [label="master"]
     hotfix [label="hotfix"]
 
-    node[shape=circle,fontsize=12.0, style="", color=""]
+    node[shape=circle,fontsize=15.0, style="", color=""]
     edge[dir=back, style=""]
 
     c_0 [label="C 0", group=master]

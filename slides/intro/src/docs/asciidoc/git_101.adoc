@@ -21,30 +21,24 @@ include::./graphviz/svn-system.dot[]
 
 * Single central server
 * Local working copy
-* No server, no commit
+* No server, no commit, only local changes
 
-=== How SVN stores data?
+=== How SVN Branch works?   
 
-* Versions are represented as a tree
-* A branch is a copied folder
-* Versions are series of changes
-
-=== How SVN Branch works?
-
-.SVN Branch
+.SVN Branching
 [graphviz, svn-branch, svg]
 --
 include::./graphviz/svn-branch.dot[]
 --
 
-* Branch is a copy of a tree
-* Files are only linked
+* Branch is a copy of a tree 
+* Files are only linked 
 * File is copied on write (Bubble up)
-* SVN uses trees, not graphs
+* trees <- SVN | GIT -> graphs
 
 === SVN Merge vs Reintegrate?
 
-.SVN Merge
+.SVN Merge   
 [graphviz, svn-merge, svg]
 --
 include::./graphviz/svn-merge.dot[]
@@ -54,7 +48,7 @@ include::./graphviz/svn-merge.dot[]
 [graphviz, svn-reintegrate, svg]
 --
 include::./graphviz/svn-reintegrate.dot[]
---
+--     
 
 * Merge: One up to all revisions
 * Reintegrate: Always all revisions
@@ -68,8 +62,8 @@ include::./graphviz/git-system.dot[]
 --
 
 * Distributed repositories
-* Full repository on workstation
-* No server, no problem
+* Full repository available locally
+* No server, still possible to merge/rebase/... 
 
 === How Git stores data?
 
@@ -79,9 +73,9 @@ include::./graphviz/git-system.dot[]
 include::./graphviz/git-data-storage.dot[]
 --
 
-* Versions are represented as a graph
-* Each version is a snapshot
-* Snapshots contains whole state
+* Versions are represented as a graph 
+* Each version is a snapshot of the repository
+* Snapshots contains referenced and changed files 
 
 === What is a Git Commit, Branch, Tag?
 
@@ -90,11 +84,10 @@ include::./graphviz/git-data-storage.dot[]
 --
 include::./graphviz/git-commit-branch-tag.dot[]
 --
-
+ 
 * A commit is a hash
 * A commit can be labeled __(branch, tag)__
 * A label is a pointer to a commit __(hash)__
-* Multiple labels __(pointers)__ for a commit possible
 * A tag is a immutable reference to a commit
 
 === How Git Branching works?
@@ -102,13 +95,13 @@ include::./graphviz/git-commit-branch-tag.dot[]
 .Git Branch Model    
 [graphviz, git-branch-model, svg]
 --
-include::./graphviz/git-branch-model.dot[]
+include::./graphviz/git-branch-model.dot[] 
 --
 
-* Master branch holds released commits
-* Dev branch contains unreleased commits  
-* Feature branch contains feature commits
-* Hotfix branches contains hotfix commits
+* *Master* holds released commits
+* *Dev* contains unreleased commits  
+* *Feature* contains feature commits
+* *Hotfix* contains hotfix commits
 
 === When Git Fast Forward?  
 
@@ -138,7 +131,7 @@ include::./graphviz/git-fast-fwd-2.dot[]
 .Git Merge Commit Situation
 [graphviz, git-merge-1, svg]
 --
-include::./graphviz/git-merge-1.dot[]  
+include::./graphviz/git-merge-1.dot[]
 --
 
 * Master has diverged from Hotfix branch
@@ -164,12 +157,12 @@ include::./graphviz/git-merge-2.dot[]
 include::./graphviz/git-merge-conflict-1.dot[]
 --
 
-* Master Branch diverged from Feature branch
-* Master Branch commits not in feature branch
-* Master has same file changed as Feature branch
+* Master branch diverged from Feature branch
+* Master contains commits which Feature branch doesn't
+* Master and Feature branch have same resource modified
 
 === How Resolve a Git Merge Conflict?
-
+    
 .Git Merge Conflict Solution
 [graphviz, git-merge-conflict-2, svg]
 --
@@ -177,9 +170,9 @@ include::./graphviz/git-merge-conflict-2.dot[]
 --
 
 * Just an ordinary merge but:
-** Git pauses process __(Commit changes are now local changes)__
+** Git pauses process __(Branch    changes are now local changes)__
 ** Conflicts have to be manually resolved __(Each conflicting file)__
-** Merge commit is manually created __(Commit conflict resolution an changes!!)__
+** Merge commit is manually created __(Commit conflict resolution and changes!!)__
 
 === When Git Rebase?
 
@@ -252,7 +245,7 @@ include::./examples/101/101.sh[tag=init]
 --
 
 * Git created *.git* directory
-* Branch *master* created by git
+* *Master* branch created by git
 
 === Prepare the branches
 

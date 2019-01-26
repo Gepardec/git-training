@@ -2,36 +2,32 @@ digraph svn_merge {
     rankdir="LR";
     bgcolor="transparent";
 
-    node[width=0.3, shape=folder,fontsize=12.0,color=orange];
+    node[width=0.3, shape=folder,fontsize=15.0,color=orange];
+    "trunk"[label="trunk",group="trunk",style="bold"];
     "feature_1"[label="feature/jira-1",group="feature_1",style="bold"];
-    "feature_2"[label="feature/jira-2",group="feature_2",style="bold"];
 
-    node[ shape=note,fontsize=12.0];
-    "file__1"[label="script.sh '",group="feature_1",color="blue"]
-    "file__2"[label="Test.java '",group="feature_1",color="blue"]
-    "file__3"[label="",group="feature_1",style="dashed",color="red"]
-    "file__4"[label="Util.java '",group="feature_1",color="blue"]
-    "file___1"[label="script.sh ''",group="feature_2",color="blue"]
-    "file___2"[label="Test.java ''",group="feature_2",color="blue"]
-    "file___3"[label="Model.java",group="feature_2",color="red"]
+    node[ shape=note,fontsize=15.0];
+    "file__1"[label="script.sh '",group="trunk",color="blue"]
+    "file__2"[label="Test.java",group="trunk",color="blue"]
+    "file__3"[label="",group="trunk",style="dashed",color="red"]
+    "file___1"[label="script.sh '",group="feature_1",color="blue"]
+    "file___2"[label="Test.java '",group="feature_1",color="blue"]
+    "file___3"[label="Model.java",group="feature_1",color="red"]
 
-    edge[arrowhead=open,dir="back"];
-    "feature_1" -> "feature_2"[label="Merge (range)",color="red"];
+    edge[dir="back"];
+    "trunk" -> "feature_1"[label="Merge (range)",color="red"];
 
     edge[arrowhead=none,dir="forward",style=dashed,color=gray];
-    "feature_1" -> "file__1";
-    "feature_2" -> "file___1";
+    "trunk" -> "file__1";
+    "feature_1" -> "file___1";
     "file__1" -> "file__2";
     "file__2" -> "file__3";
-    "file__3" -> "file__4";
     "file___1" -> "file___2";
     "file___2" -> "file___3";
 
-    edge[arrowhead=open,style="",color="green"];
+    edge[arrowhead="",style="",color="green"];
     "file___1" -> "file__1"
-    "file___2" -> "file__2"
-
-    edge[arrowhead=open,style="",color="red"];
-    "file___3" -> "file__3"
+    "file___2" -> "file__2" [dir=both]
+    "file___3" -> "file__3"[color="red"]
 
 }

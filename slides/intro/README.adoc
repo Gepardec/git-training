@@ -1,25 +1,20 @@
-:graphviz: ./src/docs/asciidoc/graphviz
 = Git Intro slides
+:graphviz: ./src/docs/asciidoc/graphviz
+:imagesdir: ./doc/images
 
 This maven project holds the documentation of the intro git training in form of asciidoc slides,
 where the course attendees learn the basics of git like the following.
 
 *What is a Commit, Brach and Tag?*
 
-[graphviz, git-commit-branh-tag, svg]
---
-include::./{graphviz}/git-commit-branch-tag.dot[]
---
+image::./git-commit-branch-tag.svg[]
 
 Attendees will learn to understand that a Commit, Branch or Tag are the same, just an ordianry
 hash representing the state of the repository at a commit.
 
 *How does branching works?*
 
-[graphviz, git-branch-model, svg]
---
-include::./{graphviz}/git-branch-model.dot[]
---
+image::./git-branch-model.svg[]
 
 Attendees will learn how to work with their sources in a git repository properly.
 They will learn that feature or hotfix development is performed on different branches, which

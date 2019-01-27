@@ -1,0 +1,17 @@
+digraph git_branch_model {
+  splines=line
+  rankdir="LR"
+  bgcolor="transparent"
+
+  /* Global Node/Edge config */
+  edge[arrowhead=open]
+
+  node[ fontsize=15.0,style="bold", shape=rect]
+  developers [label="Developers", group="dev_1"]
+  swagger_ui[label="SwaggerUI", group="dev_1"]
+  feature_release[label="Feature Release", group="dev_1"]
+  dev_2 [label="Developer", group="dev_2"]
+  hotfix[label="Hotfix", group="dev_2"]
+  hotfix_release[label="Hotfix Release", group="dev_2"]
+
+}

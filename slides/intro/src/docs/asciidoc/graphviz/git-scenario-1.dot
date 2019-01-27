@@ -1,4 +1,4 @@
-digraph git_branch_model {
+digraph git_scenario_1 {
   splines=line
   rankdir="LR"
   bgcolor="transparent"

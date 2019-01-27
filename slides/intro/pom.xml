@@ -58,6 +58,10 @@
                             <goal>process-asciidoc</goal>
                         </goals>
                         <configuration>
+                            <sourceDirectory>src/docs/asciidoc</sourceDirectory>
+                            <requires>
+                                <require>asciidoctor-diagram</require>
+                            </requires>
                             <outputDirectory>${project.build.directory}/${generated.slides.directory}</outputDirectory>
                             <backend>revealjs</backend>
                             <templateDir>${project.build.directory}/asciidoctor-reveal.js-${asciidoctor-revealjs.version}/templates</templateDir>

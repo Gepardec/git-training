@@ -4,7 +4,7 @@ Thomas Herzog
 :author: Thomas Herzog
 :revnumber: {project-version}
 :example-caption!:
-ifndef::imagesdir[:imagesdir: generated-images]
+ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/java]
 :title-slide-background-image: 70s.jpg
 :title-slide-transition: zoom
@@ -32,7 +32,7 @@ include::./graphviz/svn-branch.dot[]
 --
 
 * Branch is a copy of a tree 
-* Files are only linked 
+* Files are only linked  
 * File is copied on write (Bubble up)
 * trees <- SVN | GIT -> graphs
 
@@ -202,11 +202,20 @@ include::./graphviz/git-rebase-2.dot[]
 
 == Git 101 Hands On 
 
-* How to work with git in development scenarios with the CLI?
+* How to work with git in development scenarios via the CLI?
 * How and when to use branches?
 * How to resolve merge conflicts?
 
 === Scenario
+
+.SwaggerUI Logo
+image::./swagger-ui.png[]
+
+* We want to integrate SwaggerUI in Openshift
+* We want to manage the sources in Git
+* We want to keep history of hotfixes and branches  
+
+=== Scenario Developing Flow
 
 .Scenario
 [graphviz, git-scenario, svg]
@@ -223,13 +232,7 @@ include::./graphviz/git-scenario.dot[]
 
 * We want to create a git repository for our sources
 * We want to initially check in our sources
-* Our sources are a simple README.adoc file
-
-[source,asciidoc]
---
-= My app documentation
-...
---
+* Take the source provided
 
 === What has happened?
 
@@ -241,24 +244,24 @@ include::./graphviz/git-scenario-1.dot[]
 
 [source,bash]
 --
-include::./examples/101/101.sh[tag=init]
+include::./examples/101/101.sh[tag=init] 
 --
 
-* Git created *.git* directory
-* *Master* branch created by git
+* Git created the *.git* directory and the *master* branch
 
 === Prepare the branches
 
-* We want to implement the standard *branch model* (master, dev, feature)
-* We want branch *dev* to be the main branch
-* We want branch *master* to only contain released commits
+* We want to implement the standard branch model *(master, dev, feature)*
+* We want the *dev* branch to be the main branch
+* We want the *feature* branch to hold nwe features 
+* We want the *master* branch to point releases only
 
 === What has happened?
 
 .Branch Model
 [graphviz, git-scenario-2, svg]
 --
-include::./graphviz/git-scenario-2.dot[]
+include::./graphviz/git-scenario-2.dot[]  
 --
 
 [source,bash]
@@ -271,15 +274,15 @@ include::./examples/101/101.sh[tag=branch-model]
 
 === Make the first release
 
-* We want to make our first release
-* We want to ensure that the released state cannot be changed at all
+* We want to release SwaggerUI the first time
+* We want to ensure to keep the release state immutable
 
 === What has happened?
 
-.First release tag
+.First release tag  
 [graphviz, git-scenario-3, svg]
 --
-include::./graphviz/git-scenario-3.dot[]  
+include::./graphviz/git-scenario-3.dot[]
 --
 
 [source,bash]
@@ -289,11 +292,17 @@ include::./examples/101/101.sh[tag=first-release]
 
 * A special Pointer (Tag) has been created for the initial commit
 
-=== Provide a fix for branch dev
+=== Provide a fix for dev branch
 
-* A bug was found on branch dev
+* Someone has tried the dev branch and found a bug
 * Seems the merge/pull request wasn't handled properly
 * We want to provide a fix for the branch dev
+
+.swagger.sh
+[source,bash]
+--
+include::./examples/101/src/c_1/swagger.sh[tag=broken-function]
+--
 
 === What has happened?
 
@@ -305,41 +314,91 @@ include::./graphviz/git-scenario-4.dot[]
 
 [source,bash]
 --
-include::./examples/101/101.sh[tag=conflicting-commit] 
+include::./examples/101/101.sh[tag=fix-dev] 
 --
 
-=== Development on branch feature
+=== Development on feature branch
 
-* We want to develop a feature separated from others
-* We want our commits to not interfere with those of other features
-* Unfortunately, we will have to produce an conflict
+* A new feature has been requested for a new shell function
+* We want the new feature to not interefere with others
+* Unfortunately, our new feature will produce an conflict
+
+.swagger.sh
+[source,bash]
+--
+include::./examples/101/src/c_2/swagger.sh[tag=newfunction] 
+--
 
 === What has happened?
 
-.Feature development
+.Feature 
 [graphviz, git-scenario-5, svg]
 --
-include::./graphviz/git-scenario-5.dot[]
+include::./graphviz/git-scenario-5.dot[] 
 -- 
      
 * Commits between branch *dev* and *feature* conflict
 * For now, we have no problem, because we are on different branches
 * We will have to take care of it, when we merge the conflicting branches
 
+[source,bash]
+--
+include::./examples/101/101.sh[tag=fix-dev] 
+--
+
 === Provide a hotfix
 
-* We have to fix a production problem
-* We have to provide a fix for the current release
-* We want an own branch holding the *hotfix* commits
-* We want to release the hotfix 
-* We want to ensure that the hotfix gets reintegrated!
+* Operations has found a problem
+* SwaggerUI load has increased the resource limits won't fit anymore
+* We want to fix it by increasing the resource limits
+* We want to ensure that the hotfix gets reintegrated
+* The fix is for the current release
+
+.swagger-full.yml
+[source,bash]
+--
+include::./examples/101/src/c_3/swagger-full.yml[tag=newresource-limits] 
+--
 
 === What has happened?
 
-.Hotfix branch
+.Hotfix
 [graphviz, git-scenario-6, svg]
 --
 include::./graphviz/git-scenario-6.dot[]
 -- 
 
-* NOT DONE YET !!!!!!
+[source,bash]
+--
+include::./examples/101/101.sh[tag=fix-hotfix] 
+--
+
+=== Finish the feature
+
+* We have finished the feature development, so its time to merge
+* We want to release our feature like *feature -> dev -> master  -> tag*
+* We want to delete the branch after the merge
+* Remember the conflict!!
+
+=== What has happened?
+
+.Feature Release
+[graphviz, git-scenario-7, svg]   
+--
+include::./graphviz/git-scenario-7.dot[]
+-- 
+
+[source,bash]
+--
+include::./examples/101/101.sh[tag=release-feature]
+--
+
+=== Further training needed?
+
+* How to use the branching model with a Git server (E.g.: Gitlab)?
+** How to design branches?
+** How to do merge requests?
+* How to use the fork model along with a branching model?
+** How to combine fork and branching model?
+** Advantages of the fork model?
+** How to work with forked repositories?

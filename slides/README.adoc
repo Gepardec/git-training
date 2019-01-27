@@ -2,7 +2,11 @@
 
 This is a maven project, which contains maven modules, which hold the slides in form of asciidoc socuments, which are converted to reveal.js slides during the maven build.
 
-== How to provide Graphbiz during the build?
+== What do I need to build the slides?
+The project can be build with *Maven 3+* and *Java 8*, but needs additional software to be installed on
+your computer, which are discussed in the following sections.
+
+=== How to provide Graphbiz during the build?
 The slides use link:https://graphviz.gitlab.io[Graphviz] for visualizing git commit graphs, whereby the maven build transforms the graphviz dot files to svg files, via a local installed graphviz software.
 
 Follow the instructions on the Graphviz link:https://graphviz.gitlab.io/download[download page] how to install Graphivz on your specific OS. After the installation ensure the __dot__ binary is on the PATH. 

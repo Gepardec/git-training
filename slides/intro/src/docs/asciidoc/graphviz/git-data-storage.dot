@@ -37,13 +37,14 @@ digraph git_branch_model {
   file_2_ [label="View.java", group="file_2"]
   file_3_ [label="Controller.java", group="file_3"]
   file_3__ [label="Controller.java", group="file_3"]
+  file_2___ [label="View.java '", group="file_2"]
 
   edge[color=green]
   /* 1. Commit */
   file_1 -> file_1_ -> file_1__
 
   /* 2. Commit */
-  file_2 -> file_2_ -> file_2__
+  file_2 -> file_2_ -> file_2__ -> file_2___
 
   /* 3. Commit */
   file_1__ -> file_1___

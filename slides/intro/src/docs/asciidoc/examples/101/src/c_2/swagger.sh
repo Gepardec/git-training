@@ -10,12 +10,12 @@ GIT_URL='git@github.com:cchet-thesis-msc/prototype.git'
 GIT_REF=${GIT_REF:-'master'}
 CONTEXT_DIR='docker/swagger-ui/'
 
-# tag::broken-function[]
+# tag::modified-function[]
 function createSecrets() {
-  oc create secret generic ${SECRET_SERVIVE}
-    --from-file=ssh-privatekey='${HOME}/.ssh/id_rsa'
+  oc create secret generic ${SECRET_SERVIVE} \
+    --from-file=ssh-privatekey='${SSH_PRIV_KEY}'
 }
-# end::broken-function[]
+# end::modified-function[]
 
 function deleteSecrets() {
   oc delete secret/${SECRET_SERVIVE}
@@ -34,13 +34,6 @@ function createService() {
 function deleteService() {
     oc delete all -l app=${SERVICE_NAME}
 }
-
-# tag::newfunction[]
-function recreateService() {
-  deleteService
-  createService
-}
-# end::newfunction[]
 
 function createAll() {
   createSecrets
@@ -75,7 +68,7 @@ case ${1} in
    *)
      echo "${0} [   createAll|deleteAll|recreateAll|\
      createSecrets|deleteSecrets|recreateSecrets|\
-     createService|deleteService|recreateService|\
+     createService|deleteService|\
      scaleUp|scaleDown]"
      exit 1
       ;;

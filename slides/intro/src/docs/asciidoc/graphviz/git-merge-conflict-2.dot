@@ -3,12 +3,12 @@ digraph git_merge_fast_fwd {
     rankdir=LR
     bgcolor=transparent
 
-    node[width=0.3, shape=rect,fontsize=15.0, style="", color=orange]
-    edge[dir=back, style=""]
+    node[width=0.3, shape=rect,fontsize=15.0, style=bold, color=orange]
+    edge[dir=back, style=bold]
     master [label="master"]
 
-    node[shape=circle,fontsize=15.0, style="", color=""]
-    edge[dir=back, style=""]
+    node[shape=circle,fontsize=15.0, color=""]
+    edge[dir=back]
 
     c_0 [label="C 0", group=master]
     c_1 [label="C 1", group=master]
@@ -18,16 +18,15 @@ digraph git_merge_fast_fwd {
     c_5 [label="C 5", group=branch]
 
     /* Marked nodes */
-    node[shape=circle, color=blue, style=bold]
+    node[shape=circle, color=blue]
     c_6 [label="C 6", group=master]
 
-    edge[style=""]
     c_0 -> c_1 -> c_2
     c_2 -> c_3
     c_2 -> c_4
 
     edge[color=""]
-    master -> c_6 [dir=""]
+    master -> c_6 [dir="",minlen=2]
 
     c_4 -> c_5
     edge[color=green]

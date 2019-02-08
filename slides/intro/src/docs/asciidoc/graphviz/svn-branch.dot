@@ -2,6 +2,9 @@ digraph svn_branch {
     rankdir="LR";
     bgcolor="transparent";
 
+    node[style=bold]
+    edge[style=bold]
+
     node[width=0.3, shape=folder,fontsize=15.0,color=orange];
     trunk[label=trunk,group=trunk,style="bold"];
     feature_1[label="feature/jira-1",group=feature_1,style="bold"];
@@ -21,10 +24,11 @@ digraph svn_branch {
     file___3[label="",group=feature_2,style=dashed,color=""]
     file___4[label="Model.java",group=feature_2,color=blue]
 
+    edge[]
     trunk -> feature_1;
     feature_1 -> feature_2;
 
-    edge[arrowhead=none,style=dashed, color=gray];
+    edge[arrowhead=none,style=dashed,color=gray];
     trunk -> file_1;
     feature_1 -> file__1;
     feature_2 -> file___1;
@@ -38,7 +42,7 @@ digraph svn_branch {
     file___2 -> file___3;
     file___3 -> file___4;
 
-    edge[arrowhead="", dir=back, style="",color=green];
+    edge[arrowhead="", dir=back, style=bold,color=green];
     file__1 -> file_1
     file___1 -> file__1
     file___2 -> file__2

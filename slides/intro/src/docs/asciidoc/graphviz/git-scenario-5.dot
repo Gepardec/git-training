@@ -3,6 +3,8 @@ digraph git_scenario_5 {
     rankdir="LR"
     bgcolor="transparent"
 
+    edge[style=bold]
+
     /* Nodes representing the branches */
     node[ fontsize=15.0,style="bold", shape=folder, color=orange]
     master [group="master"]
@@ -11,7 +13,7 @@ digraph git_scenario_5 {
     tags [label="Tags", group="tags"]
 
     /* Nodes representing commit */
-    node[ fontsize=15.0,style="",shape=circle, color=""]
+    node[ fontsize=15.0,shape=circle, color=""]
     C_1[label="C 1", group="master"]
     C_2[label="C 2", group="dev", color="red"]
     C_3[label="C 3", group="feature", color="red"]
@@ -22,7 +24,7 @@ digraph git_scenario_5 {
     C_1_F_1 [label="C 1", group="feature"]
 
     /* Nodes representing Tags */
-    node[shape=rect,fontsize=15.0, style="", color=orange]
+    node[shape=rect,fontsize=15.0, color=orange]
     T_1 [label="v1.0", group="release"]
 
     /* Define master branch commits */

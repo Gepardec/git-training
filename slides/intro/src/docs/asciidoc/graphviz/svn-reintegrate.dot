@@ -2,6 +2,9 @@ digraph svn_merge {
     rankdir="LR";
     bgcolor="transparent";
 
+    node[style=bold]
+    edge[style=bold]
+
     node[width=0.3, shape=folder,fontsize=15.0,color=orange];
     "trunk"[label="trunk",group="trunk",style="bold"];
     "feature_1"[label="feature/jira-1",group="feature_1",style="bold"];
@@ -14,7 +17,7 @@ digraph svn_merge {
     "file___2"[label="Test.java '",group="feature_1",color="blue"]
     "file___3"[label="Model.java '",group="feature_1",color="blue"]
 
-    edge[dir="back"];
+    edge[dir="back",style=bold];
     "trunk" -> "feature_1"[label="Reintegrate",color=green];
 
     edge[arrowhead=none,dir="forward",style=dashed,color=gray];
@@ -25,7 +28,7 @@ digraph svn_merge {
     "file___1" -> "file___2";
     "file___2" -> "file___3";
 
-    edge[arrowhead="",style="",color="green"];
+    edge[arrowhead="",style=bold,color="green"];
     "file___1" -> "file__1"
     "file___2" -> "file__2" [dir=both]
     "file___3" -> "file__3"

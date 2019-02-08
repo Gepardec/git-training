@@ -4,7 +4,8 @@ digraph git_branch_model {
     bgcolor="transparent"
 
     /* Global Node/Edge config */
-    edge[arrowhead=open]
+    node[style=bold]
+    edge[style=bold,arrowhead=open]
 
     /* Nodes representing the branches */
     node[ fontsize=15.0,style="bold", shape=folder, color=orange]
@@ -14,14 +15,14 @@ digraph git_branch_model {
     feature [group="feature"]
 
     /* Nodes representing commit */
-    node[ fontsize=15.0,style="",shape=circle, color=""]
+    node[ fontsize=15.0,shape=circle, color=""]
     C_1[label="C 1", group="master"]
     C_2[label="C 2", group="dev"]
     C_3[label="C 3", group="hotfix"]
     C_4[label="C 4", group="feature"]
 
     /* Nodes representing pointer */
-    node[color="blue", style=bold]
+    node[color="blue"]
     C_2_M [label="C 2", group="master"]
     C_3_M [label="C 3", group="master"]
     C_1_D [label="C 1", group="dev"]
@@ -43,19 +44,19 @@ digraph git_branch_model {
 
     /* Define dev branch commits */
     dev -> C_1_D
-    C_1_D -> C_2 [arrowhead="", color="green"style=""]
+    C_1_D -> C_2 [arrowhead="", color="green",style="bold"]
     C_2 -> C_3_D
     C_3_D -> C_4_D
 
     /* Define hotfix branch commits */
     hotfix -> C_2_H
-    C_2_H -> C_3 [arrowhead="", color="green"style=""]
+    C_2_H -> C_3 [arrowhead="", color="green",style="bold"]
 
     /* Define feature branch commits */
     feature -> C_3_F
-    C_3_F -> C_4 [arrowhead="", color="green",style=""]
+    C_3_F -> C_4 [arrowhead="", color="green",style="bold"]
 
-    edge[color="green", arrowhead="",  style=""]
+    edge[color="green", arrowhead="",  style="bold"]
     /* 1. inter branch commit */
     C_1 -> C_1_D
 

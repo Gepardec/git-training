@@ -4,15 +4,15 @@ digraph git_scenario_1 {
   bgcolor="transparent"
 
   /* Global Node/Edge config */
-  edge[arrowhead=open]
-  node[fontsize=15.0]
+  edge[arrowhead=open,style=bold]
+  node[fontsize=15.0,style=bold]
 
   /* Nodes representing the branches */
-  node[style="bold", shape=folder, color=orange]
+  node[shape=folder, color=orange]
   master [group="master"]
 
   /* Nodes representing commit */
-  node[style="",shape=circle, color=""]
+  node[shape=circle, color=""]
   C_1[label="C 1", group="master"]
 
   edge[arrowhead=none, style="dashed",color=gray]

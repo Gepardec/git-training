@@ -3,6 +3,7 @@ digraph git_scenario_2 {
     rankdir="LR"
     bgcolor="transparent"
 
+    edge[style=bold]
     /* Nodes representing the branches */
     node[ fontsize=15.0,style="bold", shape=folder, color=orange]
     master [group="master"]
@@ -10,7 +11,7 @@ digraph git_scenario_2 {
     feature [label="feature", group="feature"]
 
     /* Nodes representing commit */
-    node[ fontsize=15.0,style="",shape=circle, color=""]
+    node[ fontsize=15.0,shape=circle, color=""]
     C_1[label="C 1", group="master"]
 
     /* Nodes representing pointer */

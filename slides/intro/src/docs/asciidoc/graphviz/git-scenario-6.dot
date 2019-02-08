@@ -3,6 +3,8 @@ digraph git_scenario_6 {
     rankdir="LR"
     bgcolor="transparent"
 
+    edge[style=bold]
+
     /* Nodes representing the branches */
     node[ fontsize=15.0,style="bold", shape=folder, color=orange]
     master [group="master"]
@@ -12,7 +14,7 @@ digraph git_scenario_6 {
     tags [label="Tags", group="tags"]
 
     /* Nodes representing commit */
-    node[ fontsize=15.0,style="",shape=circle, color=""]
+    node[ fontsize=15.0,shape=circle, color=""]
     C_1[label="C 1", group="master"]
     C_2[label="C 2", group="dev", color="green"]
     C_3[label="C 3", group="feature"]
@@ -27,7 +29,7 @@ digraph git_scenario_6 {
     C_1_H_1 [label="C 1", group="hotfix"]
 
     /* Nodes representing Tags */
-    node[shape=rect,fontsize=15.0, style="", color=orange]
+    node[shape=rect,fontsize=15.0,color=orange]
     T_1 [label="v1.0", group="release"]
     T_2 [label="v1.1", group="release"]
 
@@ -51,7 +53,7 @@ digraph git_scenario_6 {
     C_1 -> T_1
 
     /* Connect branches with invis edges, to declare ordering this way */
-    edge[style=invis]
+    edge[style=invis,style=bold]
     master -> hotfix -> dev -> feature -> tags
 
     {rank=same; C_1 T_1 }

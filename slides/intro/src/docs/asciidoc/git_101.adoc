@@ -50,8 +50,8 @@ include::./graphviz/svn-merge.dot[]
 include::./graphviz/svn-reintegrate.dot[]
 --     
 
-* Merge: One up to all revisions
-* Reintegrate: Always all revisions
+* *Merge:* One up to all revisions
+* *Reintegrate:* Always all revisions
 
 == What is GIT?
 
@@ -87,7 +87,7 @@ include::./graphviz/git-commit-branch-tag.dot[]
  
 * A commit is a hash
 * A commit can be labeled __(branch, tag)__
-* A label is a pointer to a commit __(hash)__
+* A label is a pointer to a commit
 * A tag is a immutable reference to a commit
 
 === How Git Branching works?
@@ -98,10 +98,10 @@ include::./graphviz/git-commit-branch-tag.dot[]
 include::./graphviz/git-branch-model.dot[] 
 --
 
-* *Master* holds released commits
-* *Dev* contains unreleased commits  
-* *Feature* contains feature commits
-* *Hotfix* contains hotfix commits
+* *Master* branch holds released commits
+* *Dev* branch contains unreleased commits
+* *Feature* branch contains feature commits
+* *Hotfix* branch contains hotfix commits
 
 === When Git Fast Forward?  
 
@@ -111,8 +111,8 @@ include::./graphviz/git-branch-model.dot[]
 include::./graphviz/git-fast-fwd-1.dot[]
 --
 
-* Master branch hasn't diverged from Hotfix branch
-* Meaning, no commits in Master which are not in Hotfix branch
+* Master branch hasn't diverged from hotfix branch
+* Meaning, there are no commits in master branch, which are not in hotfix branch
 
 === How To Git Fast Forward?  
 
@@ -123,7 +123,7 @@ include::./graphviz/git-fast-fwd-2.dot[]
 --
 
 * Just an ordinary merge, but no merge commit necessary
-* Commits moved from Hotfix -> Master branch
+* Commits moved from hotfix -> master branch
 * Master pointer fast forwarded to last commit
 
 === When Git Merge?   
@@ -134,7 +134,7 @@ include::./graphviz/git-fast-fwd-2.dot[]
 include::./graphviz/git-merge-1.dot[]
 --
 
-* Master has diverged from Hotfix branch
+* Master has diverged from hotfix branch
 * But, both have a common ancestor
 
 === How To Git Merge?
@@ -146,8 +146,8 @@ include::./graphviz/git-merge-2.dot[]
 --
 
 * Merge of **C 4** and **C 5** via new commit
-* New commit has two predecessors (Merge Commit)
-* Merge commit automatically created (If no conflict)
+* New commit has two predecessors __(Merge Commit)__
+* Merge commit automatically created __(If no conflict)__
 
 === When Git Merge Conflict?
 
@@ -157,8 +157,8 @@ include::./graphviz/git-merge-2.dot[]
 include::./graphviz/git-merge-conflict-1.dot[]
 --
 
-* Master branch diverged from Feature branch
-* Master contains commits which Feature branch doesn't
+* Master branch diverged from feature branch
+* Master contains commits which feature branch doesn't
 * Master and Feature branch have same resource modified
 
 === How Resolve a Git Merge Conflict?
@@ -169,10 +169,10 @@ include::./graphviz/git-merge-conflict-1.dot[]
 include::./graphviz/git-merge-conflict-2.dot[]
 --
 
-* Just an ordinary merge but:
-** Git pauses process __(Branch    changes are now local changes)__
-** Conflicts have to be manually resolved __(Each conflicting file)__
-** Merge commit is manually created __(Commit conflict resolution and changes!!)__
+* Just an ordinary merge, but:
+.. Git pauses process __(Branch    changes are now local changes)__
+.. Conflicts have to be manually resolved __(Each conflicting file)__
+.. Merge commit is manually created __(Commit conflict resolution and changes!!)__
 
 === When Git Rebase?
 
@@ -182,10 +182,9 @@ include::./graphviz/git-merge-conflict-2.dot[]
 include::./graphviz/git-rebase-1.dot[]
 --
 
-* Master branch diverged from Feature branch
-* Same situation as with a Git Merge
-* Rebasing does not produce a merge commit
-* Replays Feature branch commit on Master branch
+* Master branch diverged from feature branch __(Same as Git Merge)__
+* Rebasing does not create a merge commit
+* Replays feature branch commit on master branch
 
 === How To Git Rebase?
 
@@ -195,8 +194,8 @@ include::./graphviz/git-rebase-1.dot[]
 include::./graphviz/git-rebase-2.dot[]
 --
 
-* Start on common ancestor of Master and Feature branch
-* Replay Feature branch commits on Master branch
+* Start at the common ancestor of *master and *feature* branch
+* Replay *feature* branch commits on *master* branch
 * Master branch pointer moved to new last commit via fast fwd.
 * No merge commit (Cleaner history)
 
@@ -205,6 +204,7 @@ include::./graphviz/git-rebase-2.dot[]
 * How to work with git in development scenarios via the CLI?
 * How and when to use branches?
 * How to resolve merge conflicts?
+* How to use the git workflow?
 
 === Scenario
 
@@ -213,7 +213,7 @@ image::./swagger-ui.png[]
 
 * We want to integrate SwaggerUI in Openshift
 * We want to manage the sources in Git
-* We want to keep history of hotfixes and branches  
+* We want to keep history of hotfixes
 
 === Scenario Developing Flow
 
@@ -230,8 +230,8 @@ include::./graphviz/git-scenario.dot[]
 
 === Prepare a Git Repository
 
-* We want to create a git repository for our sources
-* We want to initially check in our sources
+* We want to *create* a git repository for our sources
+* We want to *initially* check in our sources
 * Take the source provided
 
 === What has happened?
@@ -274,8 +274,8 @@ include::./examples/101/101.sh[tag=branch-model]
 
 === Make the first release
 
-* We want to release SwaggerUI the first time
-* We want to ensure to keep the release state immutable
+* We want to *release* SwaggerUI the first time
+* We want to ensure to keep the release state *immutable*
 
 === What has happened?
 
@@ -290,13 +290,13 @@ include::./graphviz/git-scenario-3.dot[]
 include::./examples/101/101.sh[tag=first-release] 
 --
 
-* A special Pointer (Tag) has been created for the initial commit
+* A special Pointer __(Tag)__ has been created for the initial commit
 
 === Provide a fix for dev branch
 
 * Someone has tried the dev branch and found a bug
 * Seems the merge/pull request wasn't handled properly
-* We want to provide a fix for the branch dev
+* We want to provide a *fix* for the branch dev
 
 .swagger.sh
 [source,bash]
@@ -319,14 +319,14 @@ include::./examples/101/101.sh[tag=fix-dev]
 
 === Development on feature branch
 
-* A new feature has been requested for a new shell function
-* We want the new feature to not interefere with others
-* Unfortunately, our new feature will produce an conflict
+* A new *feature* for providing a ssh private key via an env var has been requested
+* We want the new feature to *not interfere* with others
+* Unfortunately, our new feature will produce an *conflict*
 
 .swagger.sh
 [source,bash]
 --
-include::./examples/101/src/c_2/swagger.sh[tag=newfunction] 
+include::./examples/101/src/c_2/swagger.sh[tag=modified-function]
 --
 
 === What has happened?
@@ -338,8 +338,8 @@ include::./graphviz/git-scenario-5.dot[]
 -- 
      
 * Commits between branch *dev* and *feature* conflict
-* For now, we have no problem, because we are on different branches
-* We will have to take care of it, when we merge the conflicting branches
+* For now, we have no problem, because we are on *different branches*
+* We will have to *take care* of it, when we merge the conflicting branches
 
 [source,bash]
 --
@@ -350,9 +350,9 @@ include::./examples/101/101.sh[tag=fix-dev]
 
 * Operations has found a problem
 * SwaggerUI load has increased the resource limits won't fit anymore
-* We want to fix it by increasing the resource limits
-* We want to ensure that the hotfix gets reintegrated
-* The fix is for the current release
+* We want to *fix it* by increasing the resource limits
+* We want to ensure that the hotfix gets *reintegrated*
+* The fix is for the *current* release
 
 .swagger-full.yml
 [source,bash]
@@ -376,9 +376,9 @@ include::./examples/101/101.sh[tag=fix-hotfix]
 === Finish the feature
 
 * We have finished the feature development, so its time to merge
-* We want to release our feature like *feature -> dev -> master  -> tag*
-* We want to delete the branch after the merge
-* Remember the conflict!!
+* We want to release our feature like *feature -> dev -> master -> tag*
+* We want to *keep* the hotfix branch
+* *Remember the conflict!!*
 
 === What has happened?
 

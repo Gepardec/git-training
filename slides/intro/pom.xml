@@ -78,8 +78,8 @@
                                 <revealjs_transition>linear</revealjs_transition>
                                 <revealjs_slideNumber>true</revealjs_slideNumber>
                                 <revealjs_history>true</revealjs_history>
-                                <revealjs_width>1600</revealjs_width><!-- 2560 -->
-                                <revealjs_height>900</revealjs_height><!-- 1440 -->
+                                <revealjs_width>2560</revealjs_width><!-- 1600 -->
+                                <revealjs_height>1440</revealjs_height><!-- 900 -->
                             </attributes>
                         </configuration>
                     </execution>

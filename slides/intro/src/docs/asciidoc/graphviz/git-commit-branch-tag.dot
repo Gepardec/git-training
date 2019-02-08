@@ -3,8 +3,11 @@ digraph git_merge_fast_fwd {
     rankdir=LR
     bgcolor=transparent
 
-    node[width=0.3, shape=rect,fontsize=15.0, style="", color=orange]
-    edge[dir=back, style=""]
+    node[style=bold]
+    edge[style=bold]
+
+    node[width=0.3, shape=rect,fontsize=15.0, color=orange]
+    edge[dir=back]
     master [label="master"]
     hotfix [label="hotfix"]
     feature [label="feature"]
@@ -14,8 +17,8 @@ digraph git_merge_fast_fwd {
     c_2_hash [label="d813d7fa..."]
     c_3_hash [label="7f70601d..."]
 
-    node[ shape=circle,fontsize=15.0, style="", color=""]
-    edge[dir=back, style=""]
+    node[shape=circle,fontsize=15.0,color=""]
+    edge[dir=back]
 
     c_0 [label="C 0", group=master]
     c_1 [label="C 1", group=master]
@@ -23,11 +26,11 @@ digraph git_merge_fast_fwd {
     c_3 [label="C 3", group=master]
 
     /* Main commits */
-    edge[style=""]
+    edge[style="",style=bold]
     c_0 -> c_1 -> c_2 -> c_3
 
     /* Commit Pointer */
-    edge[color="", dir=""]
+    edge[color="", dir="",minlen=2]
     release_1 -> c_3_hash -> c_3
     hotfix -> c_2_hash -> c_2
     feature -> c_1_hash -> c_1

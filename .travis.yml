@@ -1,0 +1,11 @@
+language: java
+os:
+  - linux
+addons:
+  apt:
+    packages:
+      - graphviz
+cache:
+  directories:
+    - $HOME/.m2/repository
+script: "mvn clean install"

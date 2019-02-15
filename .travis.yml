@@ -26,7 +26,7 @@ jobs:
             - graphviz
       script: >
            mvn -f ./slides/pom.xml clean install
-           && cp ./slides/all/target/git-slides-all-*-assemble-* $HOME/releases
+           && find ./slides/all/target -regextype posix-extended -regex '.*git.*' -execdir cp {} $HOME/releases/{} \;
 
     - stage: "release"
       name: "Release"

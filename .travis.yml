@@ -18,8 +18,8 @@ jobs:
     - stage: "prepare"
       name: "Prepare"
       script: >
-           "git config --local user.name 'Thomas Herzog'
-            && git config --local user.email 'thomas.herzog@gepardec.com'"
+           git config --local user.name 'Thomas Herzog'
+           && git config --local user.email 'thomas.herzog@gepardec.com'
     - stage: "build"
       name: "Build"
       script: "mvn -f ./slides/pom.xml clean install"

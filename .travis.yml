@@ -5,6 +5,10 @@ stages:
   - prepare
   - build
   - release
+cache:
+  directories:
+    - $HOME/.m2/repository
+    - $HOME/releases
 jobs:
   include:
     - stage: "prepare"
@@ -12,6 +16,7 @@ jobs:
       script: >
            git config --local user.name 'Thomas Herzog'
            && git config --local user.email 'thomas.herzog@gepardec.com'
+           && mkdir -p $HOME/releases
 
     - stage: "build"
       name: "Build"
@@ -19,22 +24,19 @@ jobs:
         apt:
           packages:
             - graphviz
-      cache:
-        directories:
-          - $HOME/.m2/repository
-      script: mvn -f ./slides/pom.xml clean install
+      script: >
+           mvn -f ./slides/pom.xml clean install
+           && cp ./slides/all/target/git-slides-all-*-assemble-* $HOME/releases
 
     - stage: "release"
       name: "Release"
       script: skip
-      before_deploy:
-        - ls ${TRAVIS_BUILD_DIR} -lrta
       deploy:
         provider: releases
         overwrite: true
         file_glob: true
         skip_cleanup: true
         api_key: "${GITHUB_OAUTH_TOKEN}"
-        file: "${TRAVIS_BUILD_DIR}/slides/all/target/git-slides-all-*-assemble*"
+        file: "$HOME/releases/git-slides-all-*-assemble*"
         on:
           tags: true

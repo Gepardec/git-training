@@ -1,11 +1,6 @@
 language: java
 os:
   - linux
-addons:
-  apt:
-    packages:
-      - graphviz
-      - git
 cache:
   directories:
     - $HOME/.m2/repository
@@ -22,10 +17,16 @@ jobs:
            && git config --local user.email 'thomas.herzog@gepardec.com'
     - stage: "build"
       name: "Build"
+      addons:
+        apt:
+          packages:
+            - graphviz
       script: mvn -f ./slides/pom.xml clean install
     - stage: "release"
       name: "Release"
       script: skip
+      before_deploy:
+        - ls ${TRAVIS_BUILD_DIR} -lrta
       deploy:
         provider: releases
         overwrite: true

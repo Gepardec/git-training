@@ -22,7 +22,7 @@ jobs:
            && git config --local user.email 'thomas.herzog@gepardec.com'
     - stage: "build"
       name: "Build"
-      script: "mvn -f ./slides/pom.xml clean install"
+      script: mvn -f ./slides/pom.xml clean install
     - stage: "release"
       name: "Release"
       script: skip
@@ -31,7 +31,7 @@ jobs:
         file_glob: true
         skip_cleanup: true
         provider: releases
-        api_key: "GITHUB OAUTH TOKEN"
+        api_key: "${GITHUB_OAUTH_TOKEN}"
         file: "./slides/all/target/git-slides-all*-assemble*"
         on:
           tags: true

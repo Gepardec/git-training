@@ -37,6 +37,6 @@ jobs:
         file_glob: true
         skip_cleanup: true
         api_key: "${GITHUB_OAUTH_TOKEN}"
-        file: "$HOME/releases/git-slides-all-*-assemble*"
+        file: "$HOME/releases/*"
         on:
           tags: true

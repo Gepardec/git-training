@@ -1,9 +1,6 @@
 language: java
 os:
   - linux
-cache:
-  directories:
-    - $HOME/.m2/repository
 stages:
   - prepare
   - build
@@ -15,13 +12,18 @@ jobs:
       script: >
            git config --local user.name 'Thomas Herzog'
            && git config --local user.email 'thomas.herzog@gepardec.com'
+
     - stage: "build"
       name: "Build"
       addons:
         apt:
           packages:
             - graphviz
+      cache:
+        directories:
+          - $HOME/.m2/repository
       script: mvn -f ./slides/pom.xml clean install
+
     - stage: "release"
       name: "Release"
       script: skip
@@ -34,5 +36,5 @@ jobs:
         skip_cleanup: true
         api_key: "${GITHUB_OAUTH_TOKEN}"
         file: "${TRAVIS_BUILD_DIR}/slides/all/target/git-slides-all-*-assemble*"
-        #on:
-        #  tags: true
+        on:
+          tags: true

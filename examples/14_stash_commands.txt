@@ -1,0 +1,22 @@
+git init
+touch blubb0
+git add .
+git commit -m "commit nr. 0"
+touch blubb1
+git add .
+git commit -m "commit nr. 1"
+touch blubb2 
+git add .
+git commit -m "commit nr. 2"
+touch blubb3 
+git add .
+git commit -m "commit nr. 3"
+touch blubb4 
+git add .
+git commit -m "commit nr. 4"
+touch blubb5
+git stash push –include-untracked
+touch blubbFIX
+git commit -m “commit nr. 5 - FIX”
+git stash pop
+

@@ -1,0 +1,18 @@
+git init
+touch blubb0
+git add .
+git commit -m "commit nr. 0"
+touch blubb1
+git add .
+git commit -m "commit nr. 1"
+touch blubb2 
+git add .
+git commit -m "commit nr. 2"
+
+git checkout -b feature1
+touch blubb3
+git add .
+git commit -m "commit nr. 3"
+
+git checkout main
+git merge feature1

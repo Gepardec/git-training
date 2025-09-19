@@ -1,0 +1,8 @@
+git config --global -l
+git config --global user.name "Robin Peter Fischer"
+git init
+git config user.name "This is the local name"
+touch blubb
+git add .
+git commit -m "Added blubb"
+git log

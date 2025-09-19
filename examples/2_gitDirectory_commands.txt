@@ -1,0 +1,4 @@
+git checkout -b "git-training"
+git push
+git push --set-upstream origin git-training
+cat refs/heads/main

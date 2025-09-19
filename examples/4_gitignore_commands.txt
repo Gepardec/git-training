@@ -1,0 +1,7 @@
+git init
+touch .gitignore
+touch blubb.log
+git status
+vim .gitignore
+>>*.log
+git status

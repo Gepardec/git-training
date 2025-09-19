@@ -1,0 +1,10 @@
+mkdir 1_threeTrees
+git init
+git status
+echo 'Hello Git' > blubb.txt
+git status
+git add . 
+git status
+git commit -m 'commit blubb.txt'
+git status
+git log

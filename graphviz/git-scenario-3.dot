@@ -1,0 +1,46 @@
+digraph git_scenario_3 {
+    splines=line
+    rankdir="LR"
+    bgcolor="transparent"
+
+    edge[style=bold]
+
+    /* Nodes representing the branches */
+    node[ fontsize=15.0,style="bold", shape=folder, color=orange]
+    master [group="master"]
+    dev [group="dev"]
+    feature [label="feature", group="feature"]
+    tags [label="Tags", group="tags"]
+
+    /* Nodes representing commit */
+    node[ fontsize=15.0,shape=circle, color=""]
+    C_1[label="C 1", group="master"]
+
+    /* Nodes representing pointer */
+    node[color="blue"]
+    C_1_D [label="C 1", group="dev"]
+    C_1_F_1 [label="C 1", group="feature"]
+
+    /* Nodes representing Tags */
+    node[shape=rect,fontsize=15.0, color=orange]
+    T_1 [label="v1.0", group="release"]
+
+    /* Define master branch commits */
+    master -> C_1
+    feature -> C_1_F_1 [arrowhead=none,style="dashed"]
+    dev -> C_1_D [arrowhead=none,style="dashed"]
+    tags -> T_1 [arrowhead=none,style="dashed"]
+
+    /* 1. inter branch commit */
+    C_1 -> C_1_D -> { C_1_F_1 }
+
+    /* 2. Git Tags */
+    C_1 -> T_1 [color="green"]
+
+    /* Connect branches with invis edges, to declare ordering this way */
+    edge[style=invis]
+    master -> dev -> feature -> tags
+
+    {rank=same; C_1 T_1}
+    {rank=same; master dev feature tags}
+}

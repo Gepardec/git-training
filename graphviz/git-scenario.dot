@@ -1,0 +1,31 @@
+digraph git_branch_model {
+    splines=line
+    rankdir="LR"
+    bgcolor="transparent"
+
+    /* Global Node/Edge config */
+    edge[arrowhead=open,style=bold]
+
+    node[ fontsize=15.0,shape=rect,style=bold]
+    dev_1 [label="Developer", group="dev_1"]
+    feature[label="New Feature", group="dev_1"]
+    feature_release[label="Feature Release", group="dev_1"]
+    dev_2 [label="Developer", group="dev_2"]
+    hotfix[label="Hotfix", group="dev_2"]
+    hotfix_release[label="Hotfix Release", group="dev_2"]
+
+    /* Developer flow */
+    edge[arrowhead=open, style="dashed",color=gray, minlen=3]
+    dev_2 -> hotfix -> hotfix_release
+    dev_1 -> feature -> feature_release
+
+    /* Relations  */
+    edge[arrowhead="", fontsize=15.0, style=bold, color="", minlen=3]
+    dev_1 -> dev_2 [dir=both, color="green"]
+    feature -> hotfix [dir=both, color="red"]
+    feature -> hotfix_release [dir=back, color="orange"]
+
+    {rank=same; dev_1 dev_2}
+    {rank=same; feature hotfix}
+    {rank=same; feature_release hotfix_release}
+}

@@ -1,0 +1,30 @@
+digraph git_merge_fast_fwd {
+    rankdir=LR
+    bgcolor=transparent
+
+    node[width=0.3, shape=rect, fontsize=15.0, style="bold,filled", fillcolor=black, fontcolor=white, color=orange, penwidth=3]
+    edge[color=orange, dir=back]
+
+    main [label="main"]
+
+    node[shape=circle, fontsize=15.0, style=filled, fillcolor=black, fontcolor=white, color=orange]
+
+    c_0 [label="C 0"]
+    c_1 [label="C 1" color=yellow, style="dashed,filled"]
+    c_2 [label="C 2"]
+    c_3 [label="C 3"]
+    c_4 [label="C 4"]
+    c_5 [label="C 5" style="dashed,filled", color=green]
+    c_6 [label="C 6" style="dashed,filled", color=red]
+
+    // Connect all nodes in a chain to enforce horizontal layout
+    c_0 -> c_1 -> c_2 -> c_3 -> c_4 -> main
+    c_1 -> c_4[style=dashed,constraint=false]
+
+    edge[style="dashed,filled"color=green]
+    c_4 -> c_5 -> c_6
+
+
+
+    {rank=same; c_4 main}
+}

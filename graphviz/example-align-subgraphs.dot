@@ -1,0 +1,60 @@
+digraph git_branch_model {
+  bgcolor="transparent";
+  rankdir="TB";
+
+  /* Invisble nodes and edges for aligning */
+  node[];
+  edge[fontsize=12];
+{ rank=same;
+    _first [group=first];
+    _last [group=last];
+    _first -> _1 -> _2 -> _last;
+}
+
+  /* Global node and edge config */
+  node[width=0.5,height=0.5, shape=circle,fontsize=12.0];
+  edge[weight=2,arrowhead=open];
+
+
+  /* Feature */
+  subgraph cluster_0 {
+    label="feature";
+
+    "c_f_1"[group=first];
+    "c_f_1" -> "c_f_2"
+  }
+
+  /* Development */
+  subgraph cluster_1 {
+    label="development";
+
+    "c_d_1" -> "c_d_2"
+  }
+
+  /* Hotfix */
+  subgraph cluster_2 {
+    label="hotfix";
+
+    "c_h_1" -> "c_h_2"
+  }
+
+  /* Master */
+  subgraph cluster_3 {
+    label="master";
+
+    "c_m_1"[group=last];
+    "c_m_1" -> "c_m_2"
+  }
+
+  /* Bind subgraphs to align nodes */
+  _first -> "c_f_1";
+  _1 -> "c_d_1";
+  _2 -> "c_h_1";
+  _last -> "c_m_1";
+
+  /* Connect subgraph nodes with each other
+  edge[constraint=false, style=solid];
+  "c_m_1" -> "c_d_1"
+  "c_d_2" -> "c_m_2"
+  "c_m_2" -> "c_m_2" */
+}

@@ -1,0 +1,38 @@
+digraph svn_system {
+    bgcolor="transparent";
+    splines=line;
+
+    node[style=bold]
+    edge[style=bold]
+
+    node[shape=circle,fontsize=15.0,shape="box3d"];
+    "git"[label="Git Server",style="bold"];
+
+    node[ shape=circle,fontsize=15.0,shape="box",style="dashed"];
+    "git-dev-1"[label="Local git-repo",group="git-local"];
+    "git-dev-2"[label="Local git-repo",group="git-local"];
+    "git-dev-3"[label="Local git-repo",group="git-local"];
+
+    node[shape=circle,fontsize=15.0,style="bold",shape="box"];
+    "dev-1"[label="Developer 1"];
+    "dev-2"[label="Developer 2"];
+    "dev-3"[label="Developer 3"];
+
+    edge[arrowhead=open,dir="back",style=bold]
+    "git" -> {"git-dev-1" "git-dev-2" "git-dev-3"}
+
+    subgraph cluster_0 {
+        edge[arrowhead=open,dir="back"]
+        "git-dev-1" -> "dev-1"
+    }
+
+    subgraph cluster_1 {
+        edge[arrowhead=open,dir="back"]
+        "git-dev-2" -> "dev-2"
+    }
+
+    subgraph cluster_2 {
+        edge[arrowhead=open,dir="back"]
+        "git-dev-3" -> "dev-3"
+    }
+}

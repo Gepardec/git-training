@@ -1,0 +1,55 @@
+digraph git_scenario_4 {
+    splines=line
+    rankdir="LR"
+    bgcolor="transparent"
+
+    edge[style=bold,arrowhead=open, dir=back, color=orange]
+
+    /* Nodes representing the branches */
+    node[ fontsize=15.0,style="bold,filled", shape=folder, color=orange, fillcolor=black, fontcolor=white]
+    main [group="main"]
+    feature [group="feature"]
+    dev [label="dev", group="feature"]
+    release [label="release", group="release"]
+
+    /* Nodes representing commit */
+    node[ fontsize=15.0,shape=circle, style=filled, fillcolor=black, fontcolor=white, shape=circle, color="orange" penwidth = 3]
+    C_1[label="C 1", group="main"]
+    C_2[label="C 2", group="main"]
+    C_4[label="C 4", group="main"]
+    C_7[label="C 7", group="main"]
+
+    node[ fontsize=15.0,shape=circle, style=filled, fillcolor=black, fontcolor=white, shape=circle, color="blue" penwidth = 3]
+    C_3[label="C 3", group="feature"]
+    C_5[label="C 5", group="feature"]
+    C_6[label="C 6", group="feature"]
+
+    node[ fontsize=15.0,shape=circle, style=filled, fillcolor=black, fontcolor=white, shape=circle, color="green" penwidth = 3]
+    C_8[label="C 8", group="dev"]
+    C_9[label="C 9", group="dev"]
+
+    node[ fontsize=15.0,shape=circle, style=filled, fillcolor=black, fontcolor=white, shape=circle, color="red" penwidth = 3]
+    C_10[label="C 10", group="release"]
+    C_11[label="C 11", group="release"]
+
+    /* Define main branch commits */
+    C_1 -> C_2 -> C_4 -> C_7
+    C_1 -> C_3
+    C_3 -> C_5 -> C_6
+    C_6 -> C_8 -> C_9
+    C_6 -> C_7
+    C_4 -> C_10 -> C_11
+
+    C_11 -> release
+    C_7 -> main
+    C_9 -> feature
+    C_6 -> dev
+
+    {rank = same; C_2 C_3}
+    {rank = same; main C_7}
+    {rank = same; release C_11}
+    {rank = same; feature C_9}
+    {rank = same; dev C_6}
+    {rank = same; C_10 C_9}
+    {rank = same; C_7 C_9}
+}

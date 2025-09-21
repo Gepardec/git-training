@@ -1,0 +1,57 @@
+digraph git_branch_model {
+    splines=line
+    rankdir="TB"
+    bgcolor="transparent"
+
+    /* Commit node config */
+    edge[style=bold,  arrowhead=open]
+    node[style=bold,  fontsize=15.0, shape=circle]
+
+    c_1 [label="C 0"]
+    c_2 [label="C 1"]
+    c_3 [label="C 2"]
+    c_4 [label="C 3"]
+
+    c_1 -> c_2 -> c_3 -> c_4 [dir=back,style=bold]
+
+    /* File node config */
+    edge[style=bold,  arrowhead=open, dir=back]
+    node[style=bold,  fontsize=15.0, shape=note]
+
+    /* initial nodes */
+    node[color=orange]
+    file_1 [label="Model.java", group="file_1"]
+    file_2 [label="View.java", group="file_2"]
+    file_3 [label="Controller.java", group="file_3"]
+
+    /* changed nodes */
+    node[color="blue"]
+    file_1_ [label="Model.java '", group="file_1"]
+    file_2__ [label="View.java '", group="file_2"]
+    file_1___ [label="Model.java ''", group="file_1"]
+    file_3___ [label="Controller.java '", group="file_3"]
+
+    /* reference nodes */
+    node[style=dashed,color=gray]
+    file_1__ [label="Model.java '", group="file_1"]
+    file_2_ [label="View.java", group="file_2"]
+    file_3_ [label="Controller.java", group="file_3"]
+    file_3__ [label="Controller.java", group="file_3"]
+    file_2___ [label="View.java '", group="file_2"]
+
+    edge[color=green,style=bold]
+    /* 1. Commit */
+    file_1 -> file_1_ -> file_1__
+
+    /* 2. Commit */
+    file_2 -> file_2_ -> file_2__ -> file_2___
+
+    /* 3. Commit */
+    file_1__ -> file_1___
+    file_3 -> file_3_ -> file_3__ -> file_3___
+
+    {rank=same; c_1 file_3 file_2 file_1}
+    {rank=same; c_2 file_1_}
+    {rank=same; c_3 file_2__}
+    {rank=same; c_4 file_1___ file_3___}
+}

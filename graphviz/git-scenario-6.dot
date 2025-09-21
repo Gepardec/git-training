@@ -1,0 +1,64 @@
+digraph git_scenario_6 {
+    splines=line
+    rankdir="LR"
+    bgcolor="transparent"
+
+    edge[style=bold]
+
+    /* Nodes representing the branches */
+    node[ fontsize=15.0,style="bold", shape=folder, color=orange]
+    master [group="master"]
+    hotfix [label="Hotifx", group="hotfix"]
+    dev [group="dev"]
+    feature [label="feature", group="feature"]
+    tags [label="Tags", group="tags"]
+
+    /* Nodes representing commit */
+    node[ fontsize=15.0,shape=circle, color=""]
+    C_1[label="C 1", group="master"]
+    C_2[label="C 2", group="dev", color="green"]
+    C_3[label="C 3", group="feature"]
+    C_4[label="C 4", group="hotfix"]
+
+    /* Nodes representing pointer */
+    node[color="blue"]
+    C_1_D [label="C 1", group="dev"]
+    C_4_D [label="C 4", group="dev"]
+    C_4_M [label="C 4", group="master"]
+    C_1_F_1 [label="C 1", group="feature"]
+    C_1_H_1 [label="C 1", group="hotfix"]
+
+    /* Nodes representing Tags */
+    node[shape=rect,fontsize=15.0,color=orange]
+    T_1 [label="v1.0", group="release"]
+    T_2 [label="v1.1", group="release"]
+
+    /* Define master branch commits */
+    master -> C_1 -> C_4_M
+    feature -> C_1_F_1 [arrowhead=none,style="dashed"]
+    dev -> C_1_D [arrowhead=none,style="dashed"]
+    tags -> T_1 -> T_2 [arrowhead=none,style="dashed"]
+    hotfix -> C_1_H_1 [arrowhead=none,style="dashed"]
+    C_2 -> C_4_D [dir=both, color="green"]
+
+    /* 1. inter branch commit */
+    C_1 -> C_1_D -> C_1_F_1
+    C_1 -> C_1_H_1 -> C_4 -> { C_4_M C_4_D } [color="green"]
+    C_4_M -> T_2 [color="green"]
+    C_1_D -> C_2
+    C_1_F_1 -> C_3
+
+    /* 2. Git Tags */
+    edge[arrowhead=none, style=dashed, color="gray"]
+    C_1 -> T_1
+
+    /* Connect branches with invis edges, to declare ordering this way */
+    edge[style=invis,style=bold]
+    master -> hotfix -> dev -> feature -> tags
+
+    {rank=same; C_1 T_1 }
+    {rank=same; T_2 C_4_M}
+    {rank=same; C_2 C_4_M}
+    {rank=same; C_4_D C_3}
+    {rank=same; master hotfix dev feature tags}
+}

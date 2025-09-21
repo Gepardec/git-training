@@ -1,0 +1,78 @@
+digraph git_scenario_7 {
+    splines=line
+    rankdir="LR"
+    bgcolor="transparent"
+
+    edge[style=bold]
+
+    /* Nodes representing the branches */
+    node[ fontsize=15.0,style="bold", shape=folder, color=orange]
+    master [group="master"]
+    hotfix [label="Hotifx", group="hotfix"]
+    dev [group="dev"]
+    feature [label="feature", group="feature"]
+    tags [label="Tags", group="tags"]
+
+    /* Nodes representing commit */
+    node[ fontsize=15.0,shape=circle, color=""]
+    C_1[label="C 1", group="master"]
+    C_2[label="C 2", group="dev", color="red"]
+    C_3[label="C 3", group="feature", color=red]
+    C_4[label="C 4", group="hotfix"]
+    C_5[label="C 5", group="feature"]
+
+    /* Nodes representing pointer */
+    node[color="blue"]
+    C_1_D [label="C 1", group="dev"]
+    C_4_D [label="C 4", group="dev"]
+    C_5_D [label="C 5", group="dev"]
+    C_4_M [label="C 4", group="master"]
+    C_5_M [label="C 5", group="master"]
+    C_1_F_1 [label="C 1", group="feature"]
+    C_1_H_1 [label="C 1", group="hotfix"]
+
+    /* Nodes representing Tags */
+    node[shape=rect,fontsize=15.0,color=orange]
+    T_1 [label="v1.0", group="release"]
+    T_2 [label="v1.1", group="release"]
+    T_3 [label="v2.0", group="release"]
+
+    /* Define master branch commits */
+    master -> C_1 -> C_4_M -> C_5_M
+    feature -> C_1_F_1 [arrowhead=none,style="dashed"]
+    dev -> C_1_D [arrowhead=none,style="dashed"]
+    tags -> T_1 -> T_2 -> T_3 [arrowhead=none,style="dashed"]
+    hotfix -> C_1_H_1
+    C_4_M -> T_2 [arrowhead=none,style="dashed"]
+    C_4_D -> C_5_D
+    C_2 -> C_4_D
+
+
+    /* 1. inter branch commit */
+    C_1 -> C_1_D -> C_1_F_1
+    C_1 -> C_1_H_1 -> C_4 -> { C_4_M C_4_D }
+    C_1_D -> C_2
+    C_1_F_1 -> C_3
+    C_3 -> C_5 [color=green]
+    C_4_D -> C_5 -> C_5_D -> C_5_M [color=green]
+    C_5_M -> T_3 [color=green]
+
+    edge[arrowhead=none, style=dashed, color="gray"]
+    C_1 -> T_1
+
+    /* 2. Conflicts */
+    edge[arrowhead="", dir=both, style=bold, color="red"]
+    C_2 -> C_3
+
+    /* Connect branches with invis edges, to declare ordering this way */
+    edge[style=invis]
+    master -> hotfix -> dev -> feature -> tags
+
+    {rank=same; C_1 T_1 }
+    {rank=same; C_1_H_1 C_1_D }
+    {rank=same; C_2 C_4 C_1_F_1}
+    {rank=same; C_3 C_4_D }
+    {rank=same; C_4_M T_2 }
+    {rank=same; C_5_M T_3 }
+    {rank=same; master hotfix dev feature tags}
+}

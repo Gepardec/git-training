@@ -1,0 +1,77 @@
+digraph git_merge_fast_fwd {
+    rankdir = LR;
+    splines = line;
+    bgcolor = transparent;
+
+    // Global node and edge styles
+    node [
+    shape = rect,
+    fontsize = 15.0,
+    fontcolor = white,
+    style = filled,
+    fillcolor = black,
+    color = orange,
+    penwidth = 3
+    ];
+    edge [
+    dir = back,
+    style = bold,
+    fontcolor = white
+    ];
+
+    // Branch labels
+    feature1 [label = "feature_1"];
+    feature2 [label = "feature_2"];
+    feature3 [label = "feature_3"];
+
+    // Commit nodes (default orange)
+    node [
+    shape = circle,
+    fontsize = 15.0,
+    fontcolor = white,
+    style = filled,
+    fillcolor = black,
+    color = orange
+    ];
+    edge [
+    dir = back,
+    color = orange,
+    fontcolor = white
+    ];
+
+    c_0 [label = "C 0", group = main];
+    c_1 [label = "C 1'", group = main];
+    c_2 [label = "C 2'" , group = main];
+    c_3 [label = "C 3'", group = main];
+
+    // Feature branch commits (green)
+    node [
+    color = green,
+    style = filled,
+    fillcolor = black,
+    fontcolor = white
+    ];
+    edge [
+    color = orange,
+    fontcolor = white
+    ];
+
+
+    // Commit flow
+    c_0 -> c_2 -> c_3 -> c_1;
+
+    // Branch pointers
+    edge [
+    color = orange,
+    fontcolor = white
+    dir="forward"
+    minlen=2
+    ];
+    feature1 -> c_1
+    feature2 -> c_2
+    feature3 -> c_3
+    // Rank alignme1t
+    { rank = same; c_1 feature1 }
+    { rank = same; c_2 feature2 }
+    { rank = same; c_3 feature3 }
+}

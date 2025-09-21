@@ -1,0 +1,35 @@
+digraph git_merge_fast_fwd {
+    splines=line
+    rankdir=LR
+    bgcolor=transparent
+
+    node[width=0.3, shape=rect,fontsize=15.0, style="bold,filled" color=orange, fillcolor=black, fontcolor=white, penwidth= 3]
+    edge[dir=back,style=bold, color=orange]
+    main [label="main"]
+
+    node[width=0.3, shape=rect, fontsize=15.0, style="bold,filled", fillcolor=black, fontcolor=white, color=orange]
+    main [label="main"]
+    release[lable="release"]
+
+    node[shape=circle, fontsize=15.0, style=filled, fillcolor=black, fontcolor=white, color=orange, penwidth=3]
+    c_0 [label="C 0", group=main]
+    c_1 [label="C 1", group=main]
+    c_2 [label="C 2", group=main]
+    c_4 [label="C 4", group=main]
+    c_5 [label="C 5", group=branch]
+    c_3 [label="C 3", group=branch]
+
+    /* Marked nodes */
+
+    c_0 -> c_1 -> c_2
+    c_2 -> { c_3 c_4 }
+    c_3 -> c_5
+
+    main -> c_4 [dir="",minlen=2]
+    release -> c_5 [dir="", minlen=2]
+
+    {rank=same; c_4 c_3}
+    {rank=same; main c_4}
+    {rank=same; release c_5}
+
+}

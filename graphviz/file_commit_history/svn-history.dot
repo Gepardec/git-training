@@ -1,0 +1,68 @@
+digraph svn_branch {
+    rankdir = "LR";
+    bgcolor = "transparent";
+
+    node [style = bold]
+    edge [style = bold]
+
+    node [width = 0.3, shape = folder, fontsize = 15.0, style = filled, fillcolor = black, fontcolor = white, color = orange];
+    trunk [label = trunk, group = trunk,style = "bold", style = filled, fillcolor = black];
+    feature_1 [label = "feature/jira-1", group = feature_1,style = "bold", style = filled, fillcolor = black];
+    feature_2 [label = "feature/jira-2", group = feature_2,style = "bold", style = filled, fillcolor = black];
+
+    node [shape = note, fontsize = 15.0, style = filled, fillcolor = black, fontcolor = white];
+    file_script_sh [label = "script.sh", group = trunk, color = orange]
+    file_empty_trunk [label = "", group = trunk, style = "dashed, filled", color = orange, fillcolor = "#2b2b2b"]
+    file_empty_trunk_1 [label = "", group = trunk, style = "dashed, filled", color = orange, fillcolor = "#2b2b2b"]
+    file_empty_trunk_2 [label = "", group = trunk, style = "dashed, filled", color = orange, fillcolor = "#2b2b2b"]
+    file_main [label = "Main.java", group = trunk, color = orange]
+    file_util [label = "Util.java '", group = trunk, color = orange]
+
+    file_script_sh_2 [label = "script.sh '", group = feature_1, color = orange]
+//    file_empty_f2 [label = "", group = trunk, style = "dashed", color = ""]
+//    file_empty_f2_1 [label = "", group = trunk, style = "dashed", color = ""]
+//    file_empty_f2_2 [label = "", group = trunk, style = "dashed", color = ""]
+    file_test_1 [label = "Test.java '", group = feature_1, color = orange]
+    file__3 [label = "", group = feature_1, style = "dashed, filled", color = orange, fillcolor = "#2b2b2b"]
+    file_util_1 [label = "Util.java", group = feature_1, color = orange]
+
+    file_script_sh_3 [label = "script.sh ''", group = feature_2, color = orange]
+    file_test_2 [label = "Test.java ''", group = feature_2, color = orange]
+    file___3 [label = "", group = feature_2, style = "dashed, filled", color = orange, fillcolor = "#2b2b2b"]
+    file_model [label = "Model.java", group = feature_2, color = orange]
+
+    { rank = same; trunk; feature_1; feature_2 }
+//    { rank = same; file_script_sh; file_script_sh_2; file_script_sh_3 }
+//    { rank = same; file_empty; file_test_1; file_test_2 }
+//    { rank = same; file_main; file__3; file___3 }
+//    { rank = same; file_util; file_util_1; file_model }
+
+    edge [arrowhead = "", style = bold,color = green];
+    feature_2 -> feature_1;
+    feature_1 -> trunk;
+
+    edge [arrowhead = none,style = dashed,color = gray];
+    trunk -> file_script_sh;
+    feature_1 -> file_script_sh_2;
+    feature_2 -> file_script_sh_3;
+    
+    file_script_sh -> file_empty_trunk;
+    file_empty_trunk -> file_empty_trunk_1;
+    file_empty_trunk_1 -> file_empty_trunk_2;
+    file_empty_trunk_2 -> file_main;
+    file_main -> file_util;
+
+    file_script_sh_2 -> file_test_1;
+    file_test_1 -> file__3;
+    file__3 -> file_util_1;
+    file_script_sh_3 -> file_test_2;
+    file_test_2 -> file___3;
+    file___3 -> file_model;
+
+    edge [arrowhead = "", style = bold,color = green, dir=back];
+    file_script_sh -> file_script_sh_2
+    file_script_sh_2 -> file_script_sh_3
+    file_test_1 -> file_test_2
+    file_util_1 -> file_util
+
+}

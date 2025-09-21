@@ -1,0 +1,53 @@
+digraph git_scenario_4 {
+    splines=line
+    rankdir="LR"
+    bgcolor="transparent"
+
+    edge[style=bold,arrowhead=open, dir=back, color=orange]
+
+    /* Nodes representing the branches */
+    node[ fontsize=15.0,style="bold,filled", shape=folder, color=orange, fillcolor=black, fontcolor=white]
+    main [group="main"]
+    feature [group="feature"]
+    dev [label="dev", group="feature"]
+    release [label="release", group="release"]
+    hotfix [label="hotfix", group="hotfix"]
+
+    /* Nodes representing commit */
+    node[ fontsize=15.0,shape=circle, style=filled, fillcolor=black, fontcolor=white, shape=circle, color="orange" penwidth = 3]
+    C_1[label="C 1", group="main"]
+    C_2[label="C 2", group="main"]
+    C_4[label="C 4", group="main"]
+    C_7[label="C 7", group="main"]
+    C_14[label="C14", group="main"]
+
+    node[ fontsize=15.0,shape=circle, style=filled, fillcolor=black, fontcolor=white, shape=circle, color="blue" penwidth = 3]
+    C_3[label="C 3", group="feature"]
+    C_5[label="C 5", group="feature"]
+    C_6[label="C 6", group="feature"]
+
+    node[ fontsize=15.0,shape=circle, style=filled, fillcolor=black, fontcolor=white, shape=circle, color="green" penwidth = 3]
+    C_8[label="C 8", group="dev"]
+    C_9[label="C 9", group="dev"]
+
+    node[ fontsize=15.0,shape=circle, style=filled, fillcolor=black, fontcolor=white, shape=circle, color="red" penwidth = 3]
+    C_10[label="C10", group="release"]
+    C_11[label="C11", group="release"]
+    C_15[label="C15", group="release"]
+
+    node[ fontsize=15.0,shape=circle, style=filled, fillcolor=black, fontcolor=white, shape=circle, color="white" penwidth = 3]
+    C_12[label="C12", group="hotfix"]
+    C_13[label="C13", group="hotfix"]
+
+    /* Define main branch commits */
+    C_1 -> C_2 -> C_4 -> C_7 -> C_14 -> main
+    C_1 -> C_3 -> C_5 -> C_6 -> dev
+    C_6 -> C_8 -> C_9 -> feature
+    C_11 -> C_12 -> C_13 -> C_14
+    C_13 -> hotfix
+    C_13 -> C_15
+    C_2 -> C_10 -> C_11 -> C_15 -> release
+    C_6 -> C_7
+
+    {rank = same; C_8 C_6}
+}

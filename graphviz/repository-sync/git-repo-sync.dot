@@ -1,0 +1,45 @@
+digraph GitSync {
+    rankdir = LR;
+    bgcolor = transparent;
+
+    node [
+    shape = box,
+    style = filled,
+    fillcolor = "#333333", // dark background
+        fontcolor = white,
+    fontname = "Arial",
+    color = orange // orange borders
+    ];
+
+    edge [
+    fontcolor = white,
+    color = red
+    ];
+
+    subgraph cluster_local {
+    label = "Local Git Repository";
+    style = dashed;
+    fontcolor = white;
+    color = orange; // orange border for cluster
+        main_local [label = "main"];
+    feature_local [label = "feature/issue"];
+    origin_main_local [label = "remotes/origin/main"];
+    origin_feature_local [label = "remotes/origin/feature/issue"];
+    }
+
+    subgraph cluster_remote {
+    label = "Remote Repository (your.company.com)";
+    style = dashed;
+    fontcolor = white;
+    color = orange; // orange border for cluster
+        main_remote [label = "main"];
+    feature_remote [label = "feature/issue"];
+    }
+
+    // Synchronization arrows
+    main_local -> origin_main_local [label = "tracks"];
+    origin_main_local -> main_remote [label = "syncs with"];
+
+    feature_local -> origin_feature_local [label = "tracks"];
+    origin_feature_local -> feature_remote [label = "syncs with"];
+}

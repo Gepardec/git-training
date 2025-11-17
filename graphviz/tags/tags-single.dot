@@ -1,0 +1,49 @@
+digraph git_merge_fast_fwd {
+    // Graph layout settings
+    splines = line
+    rankdir = LR
+    bgcolor = transparent
+
+    // Default node and edge styles
+    node [style = bold, style = filled, fillcolor = black, fontcolor = white, color = orange]
+    edge [style = bold, color = orange, fontcolor = white, arrowhead = normal, penwidth = 2]
+
+    // Branch and pointer nodes styling
+    node [width = 0.3, shape = rect, fontsize = 15.0, color = orange]
+    edge [dir = back]
+
+    // Branch pointers and tag
+    c_1_tag [label = "v1.0",style = "dashed, filled", fillcolor = black, fontcolor = white, color = orange]
+
+    // Commit hash labels
+
+    c_3_hash [label = "7f70601d..."]
+
+    // Actual commit nodes styling
+    node [
+        shape = circle,
+        fontsize = 15.0,
+        style = filled,
+        fillcolor = black,
+        fontcolor = white,
+        color = orange,
+        penwidth = 3
+    ]
+    edge [dir = back]
+
+    // Commit nodes
+
+    c_3 [label = "C 3", group = main]
+
+    /* Main commit chain */
+    edge [style = "",style = bold, fillColor = "#2b2b2b"]
+    c_3
+
+    /* Branch and tag pointers to commits */
+//    edge [style = bold, color = orange, fontcolor = white, arrowhead = normal, penwidth = 2]
+    edge [color = orange dir = "", minlen = 2]
+    c_1_tag -> c_3_hash -> c_3
+
+    /* Align nodes horizontally for clarity */
+    {rank = same; c_1_tag c_3_hash c_3}
+}

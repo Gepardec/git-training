@@ -1,0 +1,62 @@
+digraph git_merge_fast_fwd {
+    // Graph layout settings
+    splines = line
+    rankdir = LR
+    bgcolor = transparent
+
+    // Default node and edge styles
+    node [style = bold, style = filled, fillcolor = black, fontcolor = white, color = orange]
+    edge [style = bold, color = orange, fontcolor = white, arrowhead = normal, penwidth = 2]
+
+    // Branch and pointer nodes styling
+    node [width = 0.3, shape = rect, fontsize = 15.0, color = orange]
+    edge [dir = back]
+
+    // Branch pointers and tag
+    main [label = "main"]
+    hotfix [label = "hotfix"]
+    feature [label = "feature"]
+    release_1 [label = "v1.0",style = "dashed, filled", fillcolor = black, fontcolor = white, color = orange]
+
+    // Commit hash labels
+    c_0_hash [label = "9e288d60..."]
+    c_1_hash [label = "1f657438..."]
+    c_2_hash [label = "d813d7fa..."]
+    c_3_hash [label = "7f70601d..."]
+
+    // Actual commit nodes styling
+    node [
+        shape = circle,
+        fontsize = 15.0,
+        style = filled,
+        fillcolor = black,
+        fontcolor = white,
+        color = orange,
+        penwidth = 3
+    ]
+    edge [dir = back]
+
+    // Commit nodes
+    c_0 [label = "C 0", group = main]
+    c_1 [label = "C 1", group = main]
+    c_2 [label = "C 2", group = main]
+    c_3 [label = "C 3", group = main]
+
+    /* Main commit chain */
+    edge [style = "",style = bold, fillColor = "#2b2b2b"]
+    c_0 -> c_1 -> c_2 -> c_3
+
+    /* Branch and tag pointers to commits */
+//    edge [style = bold, color = orange, fontcolor = white, arrowhead = normal, penwidth = 2]
+    edge [color = orange dir = "", minlen = 2]
+    release_1 -> c_3_hash -> c_3
+    hotfix -> c_2_hash -> c_2
+    feature -> c_1_hash -> c_1
+    main -> c_0_hash -> c_0
+
+    /* Align nodes horizontally for clarity */
+    {rank = same; release_1 c_3_hash c_3}
+    {rank = same; hotfix c_2_hash c_2}
+    {rank = same; feature c_1_hash c_1}
+    {rank = same; main c_0_hash c_0}
+}

@@ -3,14 +3,24 @@ name: Mocked Multibranch Pipeline
 on:
   push:
     branches:
-      - '**'   # trigger on all branches
+      - '**'
 
 jobs:
   checkout:
     runs-on: ubuntu-latest
+    outputs:
+      commit_msg: ${{ steps.get_commit_msg.outputs.commit_msg }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Get commit message
+        id: get_commit_msg
+        run: |
+          COMMIT_MSG="$(git log -1 --pretty=%B)"
+          echo "Commit message: $COMMIT_MSG"
+          # set output
+          echo "commit_msg=$COMMIT_MSG" >> $GITHUB_OUTPUT
 
   build:
     runs-on: ubuntu-latest
@@ -28,13 +38,14 @@ jobs:
       - name: Test
         run: |
           echo "=== TEST JOB ==="
-          COMMIT_MSG="$(git log -1 --pretty=%B)"
+          COMMIT_MSG="${{ needs.checkout.outputs.commit_msg }}"
           echo "Commit message: $COMMIT_MSG"
           if [[ "$COMMIT_MSG" == *"break"* ]]; then
-            echo "Commit message contains 'break'. Aborting pipeline during TEST job."
+            echo "Commit message contains 'break'. Failing pipeline during TEST job."
             exit 1
+          else
+            echo "Commit message does not contain 'break'. Test passes."
           fi
-          echo "Mock test step running..."
 
   publish:
     runs-on: ubuntu-latest

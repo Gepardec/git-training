@@ -3,16 +3,18 @@ name: Mocked Multibranch Pipeline
 on:
   push:
     branches:
-      - '**'   # alle Branches
+      - '**'   # trigger on all branches
 
 jobs:
-  build:
+  ci:
     runs-on: ubuntu-latest
 
     steps:
+      # Stage: Checkout
       - name: Checkout
         uses: actions/checkout@v3
 
+      # Stage: Commit message check
       - name: Check commit message for "break"
         run: |
           COMMIT_MSG="$(git log -1 --pretty=%B)"
@@ -22,12 +24,21 @@ jobs:
             exit 1
           fi
 
+      # Stage: Build
       - name: Build
-        run: echo "Mock build step"
+        run: |
+          echo "=== BUILD STAGE ==="
+          echo "Mock build step running..."
 
+      # Stage: Test
       - name: Test
-        run: echo "Mock test step"
+        run: |
+          echo "=== TEST STAGE ==="
+          echo "Mock test step running..."
 
+      # Stage: Publish
       - name: Publish
         if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release')
-        run: echo "Mock publish step (only for main/release)"
+        run: |
+          echo "=== PUBLISH STAGE ==="
+          echo "Mock publish step running (only for main/release branches)..."

@@ -12,15 +12,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Check commit message for "break"
-        run: |
-          COMMIT_MSG="$(git log -1 --pretty=%B)"
-          echo "Commit message: $COMMIT_MSG"
-          if [[ "$COMMIT_MSG" == *"break"* ]]; then
-            echo "Commit message contains 'break'. Aborting pipeline."
-            exit 1
-          fi
-
   build:
     runs-on: ubuntu-latest
     needs: checkout
@@ -37,6 +28,12 @@ jobs:
       - name: Test
         run: |
           echo "=== TEST JOB ==="
+          COMMIT_MSG="$(git log -1 --pretty=%B)"
+          echo "Commit message: $COMMIT_MSG"
+          if [[ "$COMMIT_MSG" == *"break"* ]]; then
+            echo "Commit message contains 'break'. Aborting pipeline during TEST job."
+            exit 1
+          fi
           echo "Mock test step running..."
 
   publish:
